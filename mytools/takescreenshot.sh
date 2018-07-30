@@ -6,7 +6,7 @@
 # create folder .screenshots at /home/duzas
 
 #file=$(zenity --entry --title="Screenshot taken! $1" --text="File name:")
-file=$(echo "" | dmenu -p "Screenshot $1 filename (empty for timestamp):" -nb "#FFFFFF" -nf "#000000" -sb "#CCCCCC" -sf "#666666")
+file=$(echo "" | dmenu -p "Screenshot $1 filename (empty for timestamp):" -nb "#FFFFFF" -nf "#000000" -sb "#CCCCCC" -sf "#666666" -fn "Ubuntu-9")
 
 if [ "$?" = "1" ]; then
 	echo "Canceled. Exiting..."
