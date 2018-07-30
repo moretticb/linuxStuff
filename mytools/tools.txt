@@ -1,0 +1,15 @@
+mod+F1         Shows this list of shortcuts
+PrtScn         Takes a screenshot
+mod+PrtScn     Takes a screenshot region
+mod+c          Send to clipboard
+mod+s          Pacman search
+mod+Shift+s    Yaourt search
+mod+w          URL or _search google
+mod+F12        Handle multiple screens
+mod+F2         Color picker
+mod+Insert     Piano mode
+mod+z          Beeping with mouse position
+mod+F11        Mount Google Drive
+mod+r          Resize mode
+mod+m          Mouse mode (mod+arrow keys for cursor and ,. for clicks)
+
