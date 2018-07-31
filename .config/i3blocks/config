@@ -64,7 +64,7 @@ color=#666666
 label=♪
 instance=Master
 #instance=PCM
-interval=5
+interval=once
 signal=10
 color=#666666
 
