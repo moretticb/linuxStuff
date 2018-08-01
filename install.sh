@@ -13,6 +13,9 @@ mkdir -p $HOME/.config/i3
 echo "Linking i3 config file"
 ln -s -fi $HOME/linuxStuff/.config/i3/config $HOME/.config/i3/config
 
+echo -e "\nLinking USPNet vpn connection script"
+sudo ln -s -fi $HOME/linuxStuff/mytools/vpn.sh /bin/vpn
+
 echo -e "\nCreating folder for mounting Google Drive"
 mkdir -p $HOME/gd
 

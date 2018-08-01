@@ -1,3 +1,8 @@
+#!/bin/bash
+#
+# instalar bc
+# instalar dmenu
+
 xpr="0"
 ans="0"
 lastxpr="0"

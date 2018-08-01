@@ -48,7 +48,7 @@ bindsym $mod+d exec dmenu_run
 
 bindsym $mod+F1 exec cat /home/duzas/linuxStuff/mytools/tools.txt | dmenu -l 5 -i -sb "#333333"
 
-for_window [class="Unused"] rename workspace 11 to " ", move container to workspace " "
+for_window [class="Unused"] rename workspace 11 to "_", move container to workspace "_"
 for_window [class="Spotify"] move container to workspace 10
 #for_window [class="pavucontrol"] move container to workspace 10, workspace 10, focus
 

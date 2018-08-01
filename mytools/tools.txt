@@ -1,6 +1,7 @@
-mod+F1         Shows this list of shortcuts
+mod+F1         Shows this list of shortcuts and tools
 PrtScn         Takes a screenshot
 mod+PrtScn     Takes a screenshot region
+mod+a          Calculator
 mod+c          Send to clipboard
 mod+s          Pacman search
 mod+Shift+s    Yaourt search
@@ -12,4 +13,4 @@ mod+z          Beeping with mouse position
 mod+F11        Mount Google Drive
 mod+r          Resize mode
 mod+m          Mouse mode (mod+arrow keys for cursor and ,. for clicks)
-
+vpn            Connection to USPNet vpn (launch with dmenu)
