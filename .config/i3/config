@@ -73,8 +73,8 @@ bindsym XF86AudioPrev exec playerctl -a previous
 bindsym XF86AudioNext exec playerctl -a next
 
 bindsym $mod+p exec playerctl -a play-pause
-bindsym $mod+0x3d exec playerctl -a position $(echo $(playerctl position) + 5 | bc) #plus key is 0x3d
-bindsym $mod+0x2d exec playerctl -a position $(echo $(playerctl position) - 5 | bc) #minus key is 0x2d
+bindsym $mod+0x3d exec playerctl --player="vlc" position $(echo $(playerctl --player="vlc" position) + 5 | bc) #plus key is 0x3d (WITHOUT SHIFT)
+bindsym $mod+0x2d exec playerctl --player="vlc" position $(echo $(playerctl --player="vlc" position) - 5 | bc) #minus key is 0x2d (WITHOUT SHIFT)
 
 #mounting google drive
 bindsym $mod+F11 exec /home/duzas/linuxStuff/mytools/GD.sh && pkill -RTMIN+12 i3blocks
@@ -232,7 +232,9 @@ mode "mouse" {
 
 	bindsym 0x2c exec xdotool click 1 #comma
 	bindsym 0x2e exec xdotool click 3 #dot
-	
+
+	bindsym $mod+space exec xdotool getmouselocation > /tmp/barmsg.txt && pkill -RTMIN+13 i3blocks
+
 	bindsym Escape mode "default"
 }
 

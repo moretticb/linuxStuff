@@ -28,6 +28,14 @@ command=/usr/lib/i3blocks/$BLOCK_NAME
 separator_block_width=10
 markup=none
 
+
+[barmsg]
+command=cat /tmp/barmsg.txt; echo "" > /tmp/barmsg.txt
+interval=15
+separator=false
+signal=13
+markup=pango
+
 # Memory usage
 #
 # The type defaults to "mem" if the instance is not specified.
