@@ -176,5 +176,6 @@ separator=false
 
 [googledrive]
 command=if [ $(ls $HOME/gd | wc -l) -gt 0 ]; then echo 📁; else exit 1; fi
-interval=10
+interval=once
 separator=false
+signal=12

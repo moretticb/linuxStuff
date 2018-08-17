@@ -77,7 +77,7 @@ bindsym $mod+0x3d exec playerctl -a position $(echo $(playerctl position) + 5 | 
 bindsym $mod+0x2d exec playerctl -a position $(echo $(playerctl position) - 5 | bc) #minus key is 0x2d
 
 #mounting google drive
-bindsym $mod+F11 exec /home/duzas/linuxStuff/mytools/GD.sh
+bindsym $mod+F11 exec /home/duzas/linuxStuff/mytools/GD.sh && pkill -RTMIN+12 i3blocks
 
 #screenshot
 #bindsym Print exec scrot -z
@@ -105,6 +105,9 @@ bindsym $mod+F2 exec termite --exec="/home/duzas/linuxStuff/mytools/colorpicker.
 
 #handle multiple monitors
 bindsym $mod+F12 exec /home/duzas/linuxStuff/mytools/handlescreens.sh
+
+#text tools
+bindsym $mod+t exec /home/duzas/linuxStuff/mytools/text.sh
 
 #hue
 #sudo chmod 4755 /usr/bin/beep
