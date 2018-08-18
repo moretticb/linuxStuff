@@ -5,4 +5,5 @@ if [ $? = 1 ]; then
 	exit 1;
 fi
 
-$(pwd)/linuxStuff/mytools/text.sh "-" "$line" "$2"
+#$(pwd)/linuxStuff/mytools/text.sh "-" "$line" "$2"
+~/linuxStuff/mytools/text.sh "-" "$line" "$2"

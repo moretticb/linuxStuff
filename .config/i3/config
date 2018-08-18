@@ -108,6 +108,7 @@ bindsym $mod+F12 exec /home/duzas/linuxStuff/mytools/handlescreens.sh
 
 #text tools
 bindsym $mod+t exec /home/duzas/linuxStuff/mytools/text.sh
+bindsym $mod+Ctrl+t exec /home/duzas/linuxStuff/mytools/text.sh "$(xsel -b)"
 
 #hue
 #sudo chmod 4755 /usr/bin/beep
