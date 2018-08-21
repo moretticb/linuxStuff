@@ -14,3 +14,5 @@ mod+F11        Mount Google Drive
 mod+r          Resize mode
 mod+m          Mouse mode (mod+arrow keys for cursor and ,. for clicks)
 vpn            Connection to USPNet vpn (launch with dmenu)
+mod+F10        Connect to wifi profiles with netctl
+mod+t          Textual tools

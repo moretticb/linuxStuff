@@ -106,6 +106,9 @@ bindsym $mod+F2 exec termite --exec="/home/duzas/linuxStuff/mytools/colorpicker.
 #handle multiple monitors
 bindsym $mod+F12 exec /home/duzas/linuxStuff/mytools/handlescreens.sh
 
+#Connecting to wifi profiles
+bindsym $mod+F10 exec /home/duzas/linuxStuff/mytools/wifi.sh
+
 #text tools
 bindsym $mod+t exec /home/duzas/linuxStuff/mytools/text.sh
 bindsym $mod+Ctrl+t exec /home/duzas/linuxStuff/mytools/text.sh "$(xsel -b)"

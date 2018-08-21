@@ -89,6 +89,7 @@ separator=true
 interval=10
 separator=false
 separator_block_width=4
+signal=14
 
 
 [iface]
@@ -101,6 +102,7 @@ separator=true
 #instance=wlp3s0
 interval=10
 separator=false
+signal=15
 
 #[bandwidth]
 #instance=eth0

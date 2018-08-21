@@ -1,0 +1,19 @@
+Description='Automatically generated profile by wifi-menu'
+Interface=wlo1
+Connection=wireless
+Security=wpa-configsection
+ESSID=<FIELD_SSID>
+IP=dhcp
+
+WPAConfigSection=(
+ 'ssid="ICMC-802-1X"'
+ 'proto=RSN'
+ 'key_mgmt=WPA-EAP'
+ 'pairwise=CCMP'
+ 'auth_alg=OPEN'
+ 'eap=PEAP'
+ 'identity="<FIELD_USERNAME>"'
+ 'password="<FIELD_PASS>"'
+ 'priority=1'
+ 'phase2="auth=MSCHAPV2"'
+)
