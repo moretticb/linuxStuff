@@ -12,7 +12,7 @@ if [ "$from" = "$to" ]; then
 	from="auto"
 fi
 
-line=$(wget -U "Mozilla/5.0" -qO - "http://translate.googleapis.com/translate_a/single?client=gtx&sl=$from&tl=$to&dt=at&q=$1" | sed -E "s/\[\"([^\"]+)\"[a-z,0-9]+\]/\n\1\n/g" | grep -v "\[" | grep -v "^.$" | dmenu -l 5 -p "(T) $1" -nb "#EFEFEF" -nf "#454545" -sb "#0288D1" -sf "#222222")
+line=$(wget -U "Mozilla/5.0" -qO - "http://translate.googleapis.com/translate_a/single?client=gtx&sl=$from&tl=$to&dt=at&q=$1" | sed -E "s/\[\"([^\"]+)\"[a-z,0-9]+\]/\n\1\n/g" | grep -v "\[" | grep -v "^.$" | dmenu -l 5 -p "(T $from-$to) $(echo $1 | cut -b-15)..." -nb "#EFEFEF" -nf "#454545" -sb "#0288D1" -sf "#222222")
 
 if [ "$?" = 1 ]; then
 	exit 1;
