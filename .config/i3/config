@@ -69,6 +69,7 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20
 bindsym XF86Display exec xrandr --output HDMI1 --auto &
 
 bindsym XF86AudioPlay exec playerctl -a play-pause
+bindsym $mod+XF86AudioPlay exec $HOME/linuxStuff/mytools/showsong.sh
 bindsym XF86AudioPrev exec playerctl -a previous
 bindsym XF86AudioNext exec playerctl -a next
 
@@ -105,6 +106,7 @@ bindsym $mod+F2 exec termite --exec="/home/duzas/linuxStuff/mytools/colorpicker.
 
 #handle multiple monitors
 bindsym $mod+F12 exec /home/duzas/linuxStuff/mytools/handlescreens.sh
+bindsym $mod+Ctrl+F12 exec /home/duzas/linuxStuff/mytools/handleaudio.sh
 
 #Connecting to wifi profiles
 bindsym $mod+F10 exec /home/duzas/linuxStuff/mytools/wifi.sh
@@ -112,6 +114,11 @@ bindsym $mod+F10 exec /home/duzas/linuxStuff/mytools/wifi.sh
 #text tools
 bindsym $mod+t exec /home/duzas/linuxStuff/mytools/text.sh
 bindsym $mod+Ctrl+t exec /home/duzas/linuxStuff/mytools/text.sh "$(xsel -b)"
+
+#keyboard lock keys
+bindsym Caps_Lock exec sleep 0.1 && /home/duzas/linuxStuff/mytools/keylocks.sh
+bindsym Num_Lock exec sleep 0.1 && /home/duzas/linuxStuff/mytools/keylocks.sh
+#bindsym Scroll_Lock exec sleep 0.1 && /home/duzas/linuxStuff/mytools/keylocks.sh
 
 #hue
 #sudo chmod 4755 /usr/bin/beep
@@ -238,6 +245,10 @@ mode "mouse" {
 	bindsym 0x2e exec xdotool click 3 #dot
 
 	bindsym $mod+space exec xdotool getmouselocation > /tmp/barmsg.txt && pkill -RTMIN+13 i3blocks
+
+
+	bindsym $mod+Ctrl+Shift+Up exec xdotool click 4
+	bindsym $mod+Ctrl+Shift+Down exec xdotool click 5
 
 	bindsym Escape mode "default"
 }

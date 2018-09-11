@@ -35,3 +35,6 @@ ln -s -fi $HOME/linuxStuff/.vimrc $HOME/.vimrc
 echo -e "\nbashrc"
 ln -s -fi $HOME/linuxStuff/.bashrc $HOME/.bashrc
 
+echo -e "\nxinitrc"
+ln -s -fi $HOME/linuxStuff/.xinitrc $HOME/.xinitrc
+
