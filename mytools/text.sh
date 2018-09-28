@@ -1,5 +1,3 @@
-# instalar luarocks
-
 if [ "$1" = "-" ]; then
 	lastAction=$3
 	input=$(echo -e "0line0\n$2" | sed -E "s/[[:space:][:punct:]]+/\n/g" | dmenu -i -nb "#EFEFEF" -nf "#454545" -sb "#0288D1" -sf "#222222")
