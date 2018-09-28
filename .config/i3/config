@@ -241,6 +241,11 @@ mode "mouse" {
 	bindsym $mod+Left exec xdotool mousemove_relative  -- -10 0
 	bindsym $mod+Right exec xdotool mousemove_relative 10 0
 
+	bindsym $mod+Ctrl+Down exec xdotool mousemove_relative  0 50
+	bindsym $mod+Ctrl+Up exec xdotool mousemove_relative -- 0 -50
+	bindsym $mod+Ctrl+Left exec xdotool mousemove_relative  -- -50 0
+	bindsym $mod+Ctrl+Right exec xdotool mousemove_relative 50 0
+
 	bindsym 0x2c exec xdotool click 1 #comma
 	bindsym 0x2e exec xdotool click 3 #dot
 
