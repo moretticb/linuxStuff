@@ -46,14 +46,14 @@ bindsym $mod+d exec dmenu_run
 
 #meus binds
 
-bindsym $mod+F1 exec cat /home/duzas/linuxStuff/mytools/tools.txt | dmenu -l 5 -i -sb "#333333"
+bindsym $mod+F1 exec cat /home/duzas/linuxStuff/.config/i3/config | grep "##" | sed -E "s/^bindsym //g" | sed "s/^[-a-z ]*//g" | sed "s/exec .* ##/ /g" | sed "s/mode .* ##/ /g" | dmenu -l 5 -i -sb "#333333" ## shows this list of shortcuts
 
 for_window [class="Unused"] rename workspace 11 to "_", move container to workspace "_"
 for_window [class="Spotify"] move container to workspace 10
 #for_window [class="pavucontrol"] move container to workspace 10, workspace 10, focus
 
 #lock screen
-bindsym $mod+Ctrl+l exec i3lock &
+bindsym $mod+Ctrl+l exec i3lock & ## lock screen
 
 #volume control
 #bindsym XF86AudioRaiseVolume exec amixer set Master 2+
@@ -66,63 +66,63 @@ bindsym XF86AudioMute exec amixer set Master toggle && pkill -RTMIN+10 i3blocks
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20
 
-bindsym XF86Display exec xrandr --output HDMI1 --auto &
+bindsym XF86Display exec xrandr --output HDMI1 --auto & ## change video to hdmi in highest resolution
 
 bindsym XF86AudioPlay exec playerctl -a play-pause
-bindsym $mod+XF86AudioPlay exec $HOME/linuxStuff/mytools/showsong.sh
+bindsym $mod+XF86AudioPlay exec $HOME/linuxStuff/mytools/showsong.sh ## shows the current song name
 bindsym XF86AudioPrev exec playerctl -a previous
 bindsym XF86AudioNext exec playerctl -a next
 
 bindsym $mod+p exec playerctl -a play-pause
-bindsym $mod+0x3d exec playerctl --player="vlc" position $(echo $(playerctl --player="vlc" position) + 5 | bc) #plus key is 0x3d (WITHOUT SHIFT)
-bindsym $mod+0x2d exec playerctl --player="vlc" position $(echo $(playerctl --player="vlc" position) - 5 | bc) #minus key is 0x2d (WITHOUT SHIFT)
+bindsym $mod+0x3d exec playerctl --player="vlc" position $(echo $(playerctl --player="vlc" position) + 5 | bc) ## forwards 5 seconds in vlc #plus key is 0x3d (WITHOUT SHIFT)
+bindsym $mod+0x2d exec playerctl --player="vlc" position $(echo $(playerctl --player="vlc" position) - 5 | bc) ## goes back 5 seconds in vlc #minus key is 0x2d (WITHOUT SHIFT)
 
 #mounting google drive
-bindsym $mod+F11 exec /home/duzas/linuxStuff/mytools/GD.sh && pkill -RTMIN+12 i3blocks
+bindsym $mod+F11 exec /home/duzas/linuxStuff/mytools/GD.sh && pkill -RTMIN+12 i3blocks ## mounts google drive
 
 #screenshot
 #bindsym Print exec scrot -z
-bindsym Print exec /home/duzas/linuxStuff/mytools/takescreenshot.sh
+bindsym Print exec /home/duzas/linuxStuff/mytools/takescreenshot.sh ## takes a screenshot
 #bindsym --release $mod+Print exec scrot -sz
-bindsym --release $mod+Print exec "/home/duzas/linuxStuff/mytools/takescreenshot.sh Crop"
+bindsym --release $mod+Print exec "/home/duzas/linuxStuff/mytools/takescreenshot.sh Crop" ## takes a screenshot region
 
 #simple calculator
-bindsym $mod+a exec /home/duzas/linuxStuff/mytools/calc.sh
+bindsym $mod+a exec /home/duzas/linuxStuff/mytools/calc.sh ## Calculator
 
 #managing clipboard
-bindsym $mod+c exec /home/duzas/linuxStuff/mytools/sendtoclipboard.sh
+bindsym $mod+c exec /home/duzas/linuxStuff/mytools/sendtoclipboard.sh ## manages clipboard
 
 #search and install from pacman
-bindsym $mod+s exec /home/duzas/linuxStuff/mytools/pacmansearch.sh
+bindsym $mod+s exec /home/duzas/linuxStuff/mytools/pacmansearch.sh ## searches pacman repositories
 
 #search and install from yaourt
-bindsym $mod+Shift+s exec /home/duzas/linuxStuff/mytools/yaourtsearch.sh
+bindsym $mod+Shift+s exec /home/duzas/linuxStuff/mytools/yaourtsearch.sh ## searches AUR repositories (yaourt)
 
 #open an url
-bindsym $mod+w exec /home/duzas/linuxStuff/mytools/url.sh
+bindsym $mod+w exec /home/duzas/linuxStuff/mytools/url.sh ## searches for an url, website title or _searches google
 
 #pick a color and send to clipboard
-bindsym $mod+F2 exec termite --exec="/home/duzas/linuxStuff/mytools/colorpicker.sh" --class="Unused"
+bindsym $mod+F2 exec termite --exec="/home/duzas/linuxStuff/mytools/colorpicker.sh" --class="Unused" ## picks a color and sends to clipboard
 
 #handle multiple monitors
-bindsym $mod+F12 exec /home/duzas/linuxStuff/mytools/handlescreens.sh
-bindsym $mod+Ctrl+F12 exec /home/duzas/linuxStuff/mytools/handleaudio.sh
+bindsym $mod+F12 exec /home/duzas/linuxStuff/mytools/handlescreens.sh ## handles multiple monitors
+bindsym $mod+Ctrl+F12 exec /home/duzas/linuxStuff/mytools/handleaudio.sh ## handles audio output
 
 #Connecting to wifi profiles
-bindsym $mod+F10 exec /home/duzas/linuxStuff/mytools/wifi.sh
+bindsym $mod+F10 exec /home/duzas/linuxStuff/mytools/wifi.sh ## connects to netctl wifi profiles or opens wifi-menu
 
 #text tools
-bindsym $mod+t exec /home/duzas/linuxStuff/mytools/text.sh
-bindsym $mod+Ctrl+t exec /home/duzas/linuxStuff/mytools/text.sh "$(xsel -b)"
+bindsym $mod+t exec /home/duzas/linuxStuff/mytools/text.sh ## text tools
+bindsym $mod+Ctrl+t exec /home/duzas/linuxStuff/mytools/text.sh "$(xsel -b)" ## text tools from clipboard
 
 #keyboard lock keys
-bindsym Caps_Lock exec sleep 0.1 && /home/duzas/linuxStuff/mytools/keylocks.sh
+bindsym Caps_Lock exec sleep 0.1 && /home/duzas/linuxStuff/mytools/keylocks.sh 
 bindsym Num_Lock exec sleep 0.1 && /home/duzas/linuxStuff/mytools/keylocks.sh
 #bindsym Scroll_Lock exec sleep 0.1 && /home/duzas/linuxStuff/mytools/keylocks.sh
 
 #hue
 #sudo chmod 4755 /usr/bin/beep
-bindsym $mod+z exec beep -f `xdotool getmouselocation --shell | grep X | cut -d'=' -f 2` -l 100
+bindsym $mod+z exec beep -f `xdotool getmouselocation --shell | grep X | cut -d'=' -f 2` -l 100 ## sound from mouse position hue
 
 
 #FIM DE meus binds
@@ -258,7 +258,7 @@ mode "mouse" {
 	bindsym Escape mode "default"
 }
 
-bindsym $mod+m mode "mouse"
+bindsym $mod+m mode "mouse" ## mouse mode (mod+arrow keys for cursor and ,. for clicks)
 
 mode "piano" {
 	
@@ -320,8 +320,8 @@ mode "piano" {
 	bindsym Escape mode "default"
 }
 
-bindsym $mod+XF86TouchpadOn mode "piano"
-bindsym $mod+Insert mode "piano"
+bindsym $mod+XF86TouchpadOn mode "piano" ## piano mode
+bindsym $mod+Insert mode "piano" ## piano mode
 
 
 # Start i3bar to display a workspace bar (plus the system information i3status
