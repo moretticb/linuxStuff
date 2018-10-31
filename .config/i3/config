@@ -53,7 +53,7 @@ for_window [class="Spotify"] move container to workspace 10
 #for_window [class="pavucontrol"] move container to workspace 10, workspace 10, focus
 
 #lock screen
-bindsym $mod+Ctrl+l exec i3lock & ## lock screen
+bindsym $mod+Ctrl+l exec i3lock -i /home/duzas/linuxStuff/bg.png -t & ## lock screen
 
 #volume control
 #bindsym XF86AudioRaiseVolume exec amixer set Master 2+
