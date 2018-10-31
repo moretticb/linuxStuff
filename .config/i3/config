@@ -62,6 +62,12 @@ bindsym XF86AudioRaiseVolume exec pamixer -i 2 && pkill -RTMIN+10 i3blocks
 bindsym XF86AudioLowerVolume exec pamixer -d 2 && pkill -RTMIN+10 i3blocks
 bindsym XF86AudioMute exec amixer set Master toggle && pkill -RTMIN+10 i3blocks
 
+#alternative player control (for keyboards without multimedia keys)
+bindsym $mod+Prior exec pamixer -i 2 && pkill -RTMIN+10 i3blocks
+bindsym $mod+Insert exec pamixer -d 2 && pkill -RTMIN+10 i3blocks
+bindsym $mod+Home exec amixer set Master toggle && pkill -RTMIN+10 i3blocks
+#END OF alternative player control
+
 #brightness control
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20
@@ -329,7 +335,7 @@ mode "piano" {
 }
 
 bindsym $mod+XF86TouchpadOn mode "piano" ## piano mode
-bindsym $mod+Insert mode "piano" ## piano mode
+bindsym $mod+Shift+Insert mode "piano" ## piano mode
 
 
 # Start i3bar to display a workspace bar (plus the system information i3status
