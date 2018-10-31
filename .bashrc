@@ -12,3 +12,5 @@ alias python='/usr/bin/python2.7'
 alias pip='/usr/bin/pip2.7'
 
 export PYTHONSTARTUP=~/.pythonrc
+
+setfont Lat2-Terminus16.psfu
