@@ -113,7 +113,7 @@ bindsym $mod+s exec /home/duzas/linuxStuff/mytools/pacmansearch.sh ## searches p
 bindsym $mod+Shift+s exec /home/duzas/linuxStuff/mytools/yaourtsearch.sh ## searches AUR repositories (yaourt)
 
 #open an url
-bindsym $mod+w exec /home/duzas/linuxStuff/mytools/url.sh ## searches for an url, website title or _searches google
+bindsym $mod+w exec /home/duzas/linuxStuff/mytools/url.sh ## searches for an url website title or _searches google
 
 #pick a color and send to clipboard
 bindsym $mod+F2 exec termite --exec="/home/duzas/linuxStuff/mytools/colorpicker.sh" --class="Unused" ## picks a color and sends to clipboard
@@ -272,7 +272,7 @@ mode "mouse" {
 	bindsym Escape mode "default"
 }
 
-bindsym $mod+m mode "mouse" ## mouse mode (mod+arrow keys for cursor and ,. for clicks)
+bindsym $mod+m mode "mouse"; ## mouse mode (mod+arrow keys for cursor and ,. for clicks)
 
 mode "piano" {
 	
