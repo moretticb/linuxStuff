@@ -272,7 +272,8 @@ mode "mouse" {
 	bindsym Escape mode "default"
 }
 
-bindsym $mod+m mode "mouse"; ## mouse mode (mod+arrow keys for cursor and ,. for clicks)
+#bindsym $mod+m mode "mouse" ## mouse mode (mod+arrow keys for cursor and ,. for clicks)
+bindsym $mod+m exec i3-msg mode "mouse" && killall i3-nagbar  ## mouse mode (mod+arrow keys for cursor and ,. for clicks)
 
 mode "piano" {
 	
