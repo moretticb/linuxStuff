@@ -134,6 +134,8 @@ bindsym Caps_Lock exec sleep 0.1 && /home/duzas/linuxStuff/mytools/keylocks.sh
 bindsym Num_Lock exec sleep 0.1 && /home/duzas/linuxStuff/mytools/keylocks.sh
 #bindsym Scroll_Lock exec sleep 0.1 && /home/duzas/linuxStuff/mytools/keylocks.sh
 
+bindsym $mod+k exec /home/duzas/linuxStuff/mytools/kbmap.sh ## set keyboard map
+
 #hue
 #sudo chmod 4755 /usr/bin/beep
 bindsym $mod+z exec beep -f `xdotool getmouselocation --shell | grep X | cut -d'=' -f 2` -l 100 ## sound from mouse position hue
@@ -143,7 +145,7 @@ bindsym $mod+z exec beep -f `xdotool getmouselocation --shell | grep X | cut -d'
 
 # change focus
 bindsym $mod+j focus left
-bindsym $mod+k focus down
+#bindsym $mod+k focus down
 bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
 
