@@ -98,7 +98,7 @@ bindsym $mod+F11 exec /home/duzas/linuxStuff/mytools/GD.sh && pkill -RTMIN+12 i3
 #bindsym Print exec scrot -z
 bindsym Print exec /home/duzas/linuxStuff/mytools/takescreenshot.sh ## takes a screenshot
 #bindsym --release $mod+Print exec scrot -sz
-bindsym --release $mod+Print exec "/home/duzas/linuxStuff/mytools/takescreenshot.sh Crop" ## takes a screenshot region
+bindsym --release $mod+Print exec killall i3-nagbar; exec "/home/duzas/linuxStuff/mytools/takescreenshot.sh Crop" ## takes a screenshot region
 
 #simple calculator
 bindsym $mod+a exec /home/duzas/linuxStuff/mytools/calc.sh ## Calculator
