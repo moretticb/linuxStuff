@@ -14,7 +14,7 @@ fi
 
 input=$(echo "$input" | iconv -f utf8 -t ascii//TRANSLIT)
 
-action=$(echo -e "$lastAction\nDictionary\nSynonym\nExcerpt\nTranslation" | awk '!x[$0]++' | grep -v ^$ | dmenu -i -sb "#0288D1" -nf "#0288D1")
+action=$(echo -e "$lastAction\nDictionary\nSynonym\nExcerpt\nTranslation\nSpeak" | awk '!x[$0]++' | grep -v ^$ | dmenu -i -sb "#0288D1" -nf "#0288D1")
 
 if [ "$action" == "Dictionary" ]; then
 	#$(pwd)/linuxStuff/mytools/text_dicio.sh "$input" "$action"
@@ -28,6 +28,8 @@ elif [ "$action" == "Excerpt" ]; then
 elif [ "$action" == "Translation" ]; then
 	#$(pwd)/linuxStuff/mytools/text_excerpt.sh "$input" "$action"
 	~/linuxStuff/mytools/text_translate.sh "$input" "$action"
+elif [ "$action" == "Speak" ]; then
+	~/linuxStuff/mytools/text_speak.sh "$input" "$action"
 fi
 
 
