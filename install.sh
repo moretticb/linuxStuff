@@ -39,19 +39,4 @@ echo -e "\nxinitrc"
 ln -s -fi $HOME/linuxStuff/.xinitrc $HOME/.xinitrc
 
 
-echo "Install the following programs (requisites for the tools to work):"
-
-programs=$(cat mytools/* | grep instal | sort | uniq | cut -d" " -f 3)
-
-for tool in $programs; do
-	pacman -Ss $tool | grep "^[^[:space:]].*/$(echo $tool) " | grep -v installed
-done
-
-echo -e "\nInstall the following programs with yaourt (requisites for the tools to work):"
-
-programs=$(cat mytools/* | grep instal | sort | uniq | cut -d" " -f 3)
-
-for tool in $programs; do
-	yaourt -Ss $tool | grep "^[^[:space:]].*/$(echo $tool) " | grep -v installed
-done
-
+$HOME/linuxStuff/mytools/install_check.sh

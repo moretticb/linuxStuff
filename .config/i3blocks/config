@@ -25,8 +25,8 @@
 # The top properties below are applied to every block, but can be overridden.
 # Each block command defaults to the script name to avoid boilerplate.
 command=/usr/lib/i3blocks/$BLOCK_NAME
-separator_block_width=10
-markup=none
+separator_block_width=15
+markup=pango
 
 
 [barmsg]
@@ -40,10 +40,10 @@ markup=pango
 #
 # The type defaults to "mem" if the instance is not specified.
 [memory]
-label=<sup><b>RAM</b></sup>
+label=R
 separator=false
 interval=30
-color=#666666
+#color=#666666
 markup=pango
 
 #[memory]
@@ -61,7 +61,7 @@ markup=pango
 label=💩
 #instance=/mnt/data
 interval=30
-color=#666666
+#color=#666666
 
 # Volume indicator
 #
@@ -69,12 +69,13 @@ color=#666666
 # The second parameter overrides the mixer selection
 # See the script for details.
 [volume]
-label=♪
+#label=♪
+label=
 instance=Master
 #instance=PCM
 interval=once
 signal=10
-color=#666666
+#color=#666666
 
 # Network interface monitoring
 #
@@ -82,7 +83,7 @@ color=#666666
 # The address can be forced to IPv4 or IPv6 with -4 or -6 switches.
 
 [ssid]
-label=📶
+label=
 color=#00FF00
 command=iwgetid -r
 separator=true
@@ -132,13 +133,13 @@ interval=30
 # Date Time
 #
 [date]
-label=🗓️
-command=date '+%Y-%m-%d'
+label=
+command=date '+%a %Y-%m-%d'
 interval=5
 separator=false
 
 [date]
-label=🕙
+label=
 command=date '+%H:%M:%S'
 interval=5 
 separator=false
@@ -177,7 +178,7 @@ separator=false
 #instance=CAPS
 #interval=once
 #signal=11
-
+#
 #[keyindicator]
 #instance=NUM
 #interval=once
