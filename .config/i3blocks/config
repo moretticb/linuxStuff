@@ -40,7 +40,7 @@ markup=pango
 #
 # The type defaults to "mem" if the instance is not specified.
 [memory]
-label=R
+label=<small>RAM</small>
 separator=false
 interval=30
 #color=#666666
@@ -122,14 +122,6 @@ min_width=CPU: 100.00%
 #[load_average]
 #interval=10
 
-# Battery indicator
-#
-# The battery instance defaults to 0.
-[battery]
-label=⚡
-#instance=1
-interval=30
-
 # Date Time
 #
 [date]
@@ -190,3 +182,14 @@ command=if [ $(ls $HOME/gd | wc -l) -gt 0 ]; then echo 📁; else exit 1; fi
 interval=once
 separator=false
 signal=12
+
+
+# Battery indicator
+#
+# The battery instance defaults to 0.
+[battery]
+command=echo $($HOME/linuxStuff/mytools/showbattery.sh)
+#label=⚡
+#instance=1
+interval=30
+

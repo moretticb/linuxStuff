@@ -75,16 +75,17 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20
 bindsym XF86Display exec xrandr --output HDMI1 --auto & ## change video to hdmi in highest resolution
 
 #player control
-bindsym XF86AudioPlay exec playerctl -a play-pause
-bindsym $mod+XF86AudioPlay exec $HOME/linuxStuff/mytools/showsong.sh ## shows the current song name
-bindsym XF86AudioPrev exec playerctl -a previous
-bindsym XF86AudioNext exec playerctl -a next
+bindsym XF86AudioPlay exec playerctl -a play-pause $HOME/linuxStuff/mytools/showsong.sh ## play-pause and shows the current song name (alternative for keyboard without multimedia keys)
+bindsym $mod+Control+XF86AudioPlay exec $HOME/linuxStuff/mytools/showsong.sh ## shows the current song name
+bindsym XF86AudioPrev exec playerctl -a previous $HOME/linuxStuff/mytools/showsong.sh ## previous player command and shows the current song name (alternative for keyboard without multimedia keys)
+bindsym XF86AudioNext exec playerctl -a next $HOME/linuxStuff/mytools/showsong.sh ## forward player command and shows the current song name (alternative for keyboard without multimedia keys)
 #END OF player control
 
 #alternative player control (for keyboards without multimedia keys)
-bindsym $mod+End exec playerctl -a play-pause && exec $HOME/linuxStuff/mytools/showsong.sh ## play-pause and shows the current song name (alternative for keyboard without multimedia keys)
-bindsym $mod+Delete exec playerctl -a previous
-bindsym $mod+Next exec playerctl -a next
+bindsym $mod+End exec playerctl -a play-pause && $HOME/linuxStuff/mytools/showsong.sh ## play-pause and shows the current song name (alternative for keyboard without multimedia keys)
+bindsym $mod+Control+End exec $HOME/linuxStuff/mytools/showsong.sh ## shows the current song name (alternative for keyboard without multimedia keys)
+bindsym $mod+Delete exec playerctl -a previous && $HOME/linuxStuff/mytools/showsong.sh ## previous player command and shows the current song name (alternative for keyboard without multimedia keys)
+bindsym $mod+Next exec playerctl -a next && $HOME/linuxStuff/mytools/showsong.sh ## forward player command and shows the current song name (alternative for keyboard without multimedia keys)
 #END OF alternative player control
 
 bindsym $mod+p exec playerctl -a play-pause

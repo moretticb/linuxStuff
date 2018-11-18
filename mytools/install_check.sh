@@ -14,6 +14,7 @@
 # instalar evince
 # instalar jupyter
 # instalar transmission-cli
+# instalar acpi
 
 
 # AUR
