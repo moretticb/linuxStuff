@@ -32,6 +32,9 @@ ln -s -fi $HOME/linuxStuff/.gitconfig $HOME/.gitconfig
 echo -e "\nvimrc"
 ln -s -fi $HOME/linuxStuff/.vimrc $HOME/.vimrc
 
+echo -e "\npythonrc"
+ln -s -fi $HOME/linuxStuff/.pythonrc $HOME/.pythonrc
+
 echo -e "\nbashrc"
 ln -s -fi $HOME/linuxStuff/.bashrc $HOME/.bashrc
 

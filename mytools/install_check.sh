@@ -15,13 +15,16 @@
 # instalar jupyter
 # instalar transmission-cli
 # instalar acpi
+# instalar openconnect
 
 
 # AUR
 # instalar google-drive-ocamlfuse
 # instalar otf-font-awesome-4
 
-programs=$(cat ./* | grep instal | sort | uniq | cut -d" " -f 3)
+echo -e "\nInstall the following programs with pacman (requisites for the tools to work):"
+
+programs=$(cat $HOME/linuxStuff/mytools/* | grep instal | sort | uniq | cut -d" " -f 3)
 
 for tool in $programs; do
 	pacman -Ss $tool | grep "^[^[:space:]].*/$(echo $tool) " | grep -v installed
@@ -29,7 +32,7 @@ done
 
 echo -e "\nInstall the following programs with yaourt (requisites for the tools to work):"
 
-programs=$(cat ./* | grep instal | sort | uniq | cut -d" " -f 3)
+programs=$(cat $HOME/linuxStuff/mytools/* | grep instal | sort | uniq | cut -d" " -f 3)
 
 for tool in $programs; do
 	yaourt -Ss $tool | grep "^[^[:space:]].*/$(echo $tool) " | grep -v installed | grep aur
