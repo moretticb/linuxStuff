@@ -1,3 +1,5 @@
 [user]
 	email = caiodba@gmail.com
 	name = Caio Benatti Moretti
+[http]
+	postBuffer = 1048576000
