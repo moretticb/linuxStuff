@@ -1,17 +1,26 @@
 #!/bin/sh
 clear
 
-echo "> $1"
-echo -e "\nLANGUAGES:"
-echo "  0 - Google search"
-echo "  1 - Shell"
-echo "  2 - C"
-echo "  3 - R"
+parentPID=$(ps -eo ppid,cmd | grep $0 | grep -v grep | cut -d "/" -f 1 | head -1)
+fileFormat=$(ps -eo pid,cmd | grep "$parentPID" | grep -v grep | cut -d "." -f 2)
 
-echo -e "\nLast: $(cat /tmp/vim_lastdoc 2>/dev/null)"
+opt="goo"
+if [ $(echo $fileFormat | wc -w) -gt 1 ]; then
+	echo "> $1"
+	echo "No file format found. Choose the language:"
+	echo -e "\nLANGUAGES:"
+	echo "  goo - Google search"
+	echo "   sh - Shell"
+	echo "    c - C"
+	echo "    r - R"
 
-opt=0
-read -p "> " opt
+	echo -e "\nLast: $(cat /tmp/vim_lastdoc 2>/dev/null)"
+
+	read -p "> " opt
+else
+	echo "The file format is $fileFormat."
+	opt=$fileFormat
+fi
 
 if [ "$opt" == "" ]; then
 	echo "using last option: $(cat /tmp/vim_lastdoc)"
@@ -21,11 +30,11 @@ fi
 echo $opt > /tmp/vim_lastdoc
 
 case $opt in
-	0) xdg-open "http://www.google.com/search?q=$1" ;;
-	1) man 1 $1 ;;
-	2) man 3 $1 ;;
-	3) echo "?$1" | R --no-save ;;
-	*) xdg-open "http://www.google.com/search?q=$1" ;;
+	"goo") xdg-open "http://www.google.com/search?q=$1" ;;
+	"sh") man 1 $1 ;;
+	"c") man 3 $1 ;;
+	"r") echo "?$1" | R --no-save ;;
+	*) echo "Format not available. Searching Google."; xdg-open "http://www.google.com/search?q=$1%20$opt" ;;
 esac
 
 exit 0;
