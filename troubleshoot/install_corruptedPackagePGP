@@ -1,0 +1,13 @@
+--- Found at https://bbs.archlinux.org/viewtopic.php?id=195139
+
+I found this https://bbs.archlinux.org/viewtopic.php?id=190380 and there is a fix mentioned there which is Run the following command as root
+
+dirmngr </dev/null
+
+Followed by
+
+pacman-key --populate archlinux
+pacman-key --refresh-keys
+
+Then
+pacstrap -i /mnt base base-devel
