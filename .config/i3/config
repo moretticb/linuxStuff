@@ -140,7 +140,8 @@ bindsym $mod+k exec /home/duzas/linuxStuff/mytools/kbmap.sh ## set keyboard map
 
 #hue
 #sudo chmod 4755 /usr/bin/beep
-bindsym $mod+z exec beep -f `xdotool getmouselocation --shell | grep X | cut -d'=' -f 2` -l 100 ## sound from mouse position hue
+#bindsym $mod+z exec beep -f `xdotool getmouselocation --shell | grep X | cut -d'=' -f 2` -l 100 ## sound from mouse position hue
+bindsym $mod+z exec play -qn synth 0.1 triangle `xdotool getmouselocation --shell | grep X | cut -d'=' -f 2` ## sound from mouse position hue
 
 
 #FIM DE meus binds
@@ -284,55 +285,72 @@ mode "piano" {
 	#sudo chmod 4755 /usr/bin/beep
 	
 	#C
-	bindsym $mod+q exec beep -f 262 -l 100
+	#bindsym $mod+q exec beep -f 262 -l 100
+	bindsym $mod+q exec play -qn synth 0.2 triangle 262
 
 	#C#
-	bindsym $mod+2 exec beep -f 277 -l 100
+	#bindsym $mod+2 exec beep -f 277 -l 100
+	bindsym $mod+2 exec play -qn synth 0.2 triangle 277
 
 	#D
-	bindsym $mod+w exec beep -f 294 -l 100
+	#bindsym $mod+w exec beep -f 294 -l 100
+	bindsym $mod+w exec play -qn synth 0.2 triangle 294
 
 	#D#
-	bindsym $mod+3 exec beep -f 311 -l 100
+	#bindsym $mod+3 exec beep -f 311 -l 100
+	bindsym $mod+3 exec play -qn synth 0.2 triangle 311
 
 	#E
-	bindsym $mod+e exec beep -f 330 -l 100
+	#bindsym $mod+e exec beep -f 330 -l 100
+	bindsym $mod+e exec play -qn synth 0.2 triangle 330
 
 	#F
-	bindsym $mod+r exec beep -f 349 -l 100
+	#bindsym $mod+r exec beep -f 349 -l 100
+	bindsym $mod+r exec play -qn synth 0.2 triangle 349
 
 	#F#
-	bindsym $mod+5 exec beep -f 370 -l 100
+	#bindsym $mod+5 exec beep -f 370 -l 100
+	bindsym $mod+5 exec play -qn synth 0.2 triangle 370
 
 	#G
-	bindsym $mod+t exec beep -f 392 -l 100
+	#bindsym $mod+t exec beep -f 392 -l 100
+	bindsym $mod+t exec play -qn synth 0.2 triangle 392
 
 	#G#
-	bindsym $mod+6 exec beep -f 415 -l 100
+	#bindsym $mod+6 exec beep -f 415 -l 100
+	bindsym $mod+6 exec play -qn synth 0.2 triangle 415
 
 	#A
-	bindsym $mod+y exec beep -f 440 -l 100
+	#bindsym $mod+y exec beep -f 440 -l 100
+	bindsym $mod+y exec play -qn synth 0.2 triangle 440
 
 	#A#
-	bindsym $mod+7 exec beep -f 466 -l 100
+	#bindsym $mod+7 exec beep -f 466 -l 100
+	bindsym $mod+7 exec play -qn synth 0.2 triangle 466
 
 	#B
-	bindsym $mod+u exec beep -f 494 -l 100
+	#bindsym $mod+u exec beep -f 494 -l 100
+	bindsym $mod+u exec play -qn synth 0.2 triangle 494
 
 	#C
-	bindsym $mod+i exec beep -f 523 -l 100
+	#bindsym $mod+i exec beep -f 523 -l 100
+	bindsym $mod+i exec play -qn synth 0.2 triangle 523
 
 	#C#
-	bindsym $mod+9 exec beep -f 554 -l 100
+	#bindsym $mod+9 exec beep -f 554 -l 100
+	bindsym $mod+9 exec play -qn synth 0.2 triangle 554
 
 	#D
-	bindsym $mod+o exec beep -f 587 -l 100
+	#bindsym $mod+o exec beep -f 587 -l 100
+	bindsym $mod+o exec play -qn synth 0.2 triangle 587
 
 	#D#
-	bindsym $mod+0 exec beep -f 622 -l 100
+	#bindsym $mod+0 exec beep -f 622 -l 100
+	bindsym $mod+0 exec play -qn synth 0.2 triangle 622
 
 	#E
-	bindsym $mod+p exec beep -f 659 -l 100
+	#bindsym $mod+p exec beep -f 659 -l 100
+	bindsym $mod+p exec play -qn synth 0.2 triangle 659
 
 
 
