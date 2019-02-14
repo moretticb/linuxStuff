@@ -141,7 +141,7 @@ bindsym $mod+k exec /home/duzas/linuxStuff/mytools/kbmap.sh ## set keyboard map
 #hue
 #sudo chmod 4755 /usr/bin/beep
 #bindsym $mod+z exec beep -f `xdotool getmouselocation --shell | grep X | cut -d'=' -f 2` -l 100 ## sound from mouse position hue
-bindsym $mod+z exec play -qn synth 0.1 triangle `xdotool getmouselocation --shell | grep X | cut -d'=' -f 2` ## sound from mouse position hue
+bindsym $mod+z exec play -qn synth 0.25 triangle `xdotool getmouselocation --shell | grep X | cut -d'=' -f 2` ## sound from mouse position hue
 
 
 #FIM DE meus binds
