@@ -14,4 +14,6 @@ boot arch linux and install os-prober
 	pacman -S os-prober
 
 repeat grub-install and grub-mkconfig commands
+
+make sure the entry arch_grub has the highest boot priority in BIOS
 	
