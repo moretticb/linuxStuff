@@ -1,0 +1,17 @@
+install windows first (let windows create EFI partition)
+
+install arch linux
+
+install grub normally
+	pacman -S grub
+	pacman -S efibootmgr
+	grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=arch_grub
+	grub-mkconfig -o /boot/grub/grub.cfg
+
+reboot and check whether grub is working
+
+boot arch linux and install os-prober
+	pacman -S os-prober
+
+repeat grub-install and grub-mkconfig commands
+	
