@@ -1,4 +1,6 @@
 #!/bin/sh
+#install links
+#install dmenu
 
 list="BRL\nUSD\nEURO\nPOUND\nCANADIAN"
 
