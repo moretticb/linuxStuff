@@ -58,16 +58,16 @@ newval=$(echo "$resp" | cut -d"=" -f 2 | sed -E "s/^[[:space:]]+([0-9,]+)[[:spac
 
 cmd=$(echo -e "SWAP\nCHANGE\nCONTINUE" | dmenu -i -p "$resp" -nb "$nb" -nf "$nf" -sb "$sb" -sf "$sf")
 if [ "$?" != 0 ]; then
-	./currency.sh
+	$(pwd)/linuxStuff/mytools/currency.sh
 elif [ "$cmd" = "SWAP" ]; then
 	val="$newval"
-	./currency.sh $val $to $from
+	$(pwd)/linuxStuff/mytools/currency.sh $val $to $from
 elif [ "$cmd" = "CONTINUE" ]; then
 	val="$newval"
-	./currency.sh $val $to
+	$(pwd)/linuxStuff/mytools/currency.sh $val $to
 elif [ "$cmd" = "CHANGE" ]; then
-	./currency.sh $val $from
+	$(pwd)/linuxStuff/mytools/currency.sh $val $from
 else
-	./currency.sh $cmd $from $to
+	$(pwd)/linuxStuff/mytools/currency.sh $cmd $from $to
 fi
 
