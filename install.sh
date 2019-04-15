@@ -16,6 +16,13 @@ ln -s -fi $HOME/linuxStuff/.config/i3/config $HOME/.config/i3/config
 echo -e "\nLinking USPNet vpn connection script"
 sudo ln -s -fi $HOME/linuxStuff/mytools/vpn.sh /bin/vpn
 
+echo -e "\nLinking bandeco tool"
+sudo ln -s -fi $HOME/linuxStuff/mytools/bandeco.sh /bin/bandeco
+
+echo -e "\nLinking currency tool"
+sudo ln -s -fi $HOME/linuxStuff/mytools/currency.sh /bin/currency
+
+
 echo -e "\nCreating folder for mounting Google Drive"
 mkdir -p $HOME/gd
 
