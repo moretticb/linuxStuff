@@ -12,5 +12,6 @@ alias python='/usr/bin/python2.7'
 alias pip='/usr/bin/pip2.7'
 
 export PYTHONSTARTUP=~/.pythonrc
+export EDITOR=vim
 
 setfont Lat2-Terminus16.psfu 2>/dev/null
