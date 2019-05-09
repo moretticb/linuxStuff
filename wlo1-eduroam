@@ -1,0 +1,17 @@
+Description='Automatically generated profile by wifi-menu'
+Interface=wlo1
+Connection=wireless
+Security=wpa-configsection
+ESSID=eduroam
+IP=dhcp
+
+WPAConfigSection=(
+ 'ssid="eduroam"'
+ 'proto=RSN'
+ 'key_mgmt=WPA-EAP'
+ 'eap=TTLS'
+ 'identity="<FIELD_USERNAME>"'
+ 'password="<FIELD_PASS>"'
+ 'phase2="auth=MSCHAPV2"'
+)
+
