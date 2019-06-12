@@ -1,0 +1,18 @@
+run
+	xinput list | egrep "slave.*pointer" | grep -v XTEST
+to get the input ID
+
+get the input configuration from the device with id ID by running
+	xinput get-button-map {ID}
+
+use this output and reverse order of numbers 4 and 5 (becomes 5 4) to reverse mouse scrolling
+
+run
+	xinput set-button-map {ID} {REVERSED_OUTPUT}
+
+Example:
+	xinput set-button-map 12 1 2 3 5 4 6 7 8 9 10 11 12
+reverses scroll of device with id 12, which originally has output 1 2 3 4 5 6 7 8 9 10 11 12
+
+check https://n00bsys0p.wordpress.com/2011/07/26/reverse-xorg-scrolling-in-linux-natural-scrolling/ for more details
+
