@@ -1,0 +1,22 @@
+install the following packages with pacman:
+
+bluez
+bluez-utils
+pulseaudio-bluetooth
+
+Then, make sure that bluetooth service is running
+
+sudo systemctl enable bluetooth #bluetooth service becomes enabled everytime the system is started
+sudo systemctl start bluetooth #starts bluetooth service if it is not already running
+
+run bluetoothctl:
+
+$ bluetoothctl
+[bluetooth]# power on
+[bluetooth]# agent on
+[bluetooth]# scan on
+[bluetooth]# pair [device address]
+or trust to skip the 0000 password input
+[bluetooth]# trust [device address]
+[bluetooth]# connect [device address]
+

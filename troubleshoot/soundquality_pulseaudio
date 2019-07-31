@@ -1,0 +1,42 @@
+append the following lines to /etc/pulse/daemon.conf 
+
+default-sample-format = float32ne
+default-sample-rate = 48000
+alternate-sample-rate = 44100
+default-sample-channels = 2
+default-channel-map = front-left,front-right
+ 
+default-fragments = 2
+default-fragment-size-msec = 125
+resample-method = soxr-vhq
+# resample-method = speex-float-10
+# resample-method = speex-fixed-10
+enable-lfe-remixing = no
+high-priority = yes
+nice-level = -11
+realtime-scheduling = yes
+realtime-priority = 9
+rlimit-rtprio = 9
+rlimit-rttime = -1
+daemonize = no
+
+Make sure that the parameters above that already exist in the file are commented. Then, use the following configuration in /etc/asound.conf
+
+# Use PulseAudio by default
+pcm.!default {
+#  type pulse
+  type plug
+  fallback "sysdefault"
+  hint {
+    show on
+    description "Default ALSA Output (currently PulseAudio Sound Server)"
+  }
+}
+
+ctl.!default {
+  type pulse
+  fallback "sysdefault"
+}
+
+# vim:set ft=alsaconf:
+
