@@ -8,8 +8,8 @@
 alias ls='ls --color=auto'
 PS1='\u@\h \W\$ '
 
-alias python='/usr/bin/python2.7'
-alias pip='/usr/bin/pip2.7'
+#alias python='/usr/bin/python2.7'
+#alias pip='/usr/bin/pip2.7'
 
 export PYTHONSTARTUP=~/.pythonrc
 export EDITOR=vim
