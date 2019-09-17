@@ -1,0 +1,3 @@
+open up a new tab, and type about:config into the address bar, and press enter.
+Then use the search box in this page to find the key layout.css.devPixelsPerPx and then change the value from -1.0 to 2
+Now, flip back to a normal Firefox tab, and your interface should look a lot better.
