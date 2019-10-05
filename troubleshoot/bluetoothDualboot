@@ -1,0 +1,64 @@
+source: https://unix.stackexchange.com/questions/255509/bluetooth-pairing-on-dual-boot-of-windows-linux-mint-ubuntu-stop-having-to-p
+
+How to fix
+
+Using the instructions below, we'll first pair your Bluetooth devices with Ubuntu/Linux Mint, and then we'll pair Windows. Then we'll go back into our Linux system and copy the Windows generated pairing key(s) into our Linux system.
+
+    Pair w/ mint/ubuntu - all devices
+    Pair all devices w/ windows
+
+    Copy your windows pairing keys in 1 of 2 ways.
+
+        use chntpw from your Linux distro (easier), start in a terminal then:
+            sudo apt-get install chntpw
+            mount your windows system drive
+            cd /[windowsSystemDrive]/WINDOWS/System32/config - on windows 10 the root folder is "Windows", on Win7 it is "WINDOWS"
+            chntpw -e SYSTEM opens up a console
+
+            run these commands in that console
+
+            > cd CurrentControlSet\Services\BTHPORT\Parameters\Keys
+            > # if no CurrentControlSet then try ControlSet001
+            > # on windows 7, "services" above is lowercased.
+            > ls
+            # shows you your bluetooth port's mac address
+            Node has 1 subkeys and 0 values
+              key name
+              <aa1122334455>
+            > cd aa1122334455  # CD into the folder
+            > ls  
+            # lists of existing devices' MAC addresses
+            Node has 0 subkeys and 1 values
+              size     type            value name             [value if type DWORD]
+                16  REG_BINARY        <001f20eb4c9a>
+            > hex 001f20eb4c9a
+            => :00000 XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX ...ignore..chars..
+            # ^ the XXs are the pairing key
+
+            Make a note of which Bluetooth device MAC address matches which paring key. The mint/ubuntu one won't need the spaces in-between. Ignore the :00000
+
+    Let's Go back to Linux (if not in Linux), and add our windows key to our Linux config entries. Just note that the Bluetooth port's mac address is formatted differently when moving from Windows to Linux - referenced as aa1122334455 in Windows in my example above. The Linux version will be in all caps and punctuated by ':' after every 2 characters - example: AA:11:22:33:44:55. Based on your version of Linux, you can do one of these:
+
+        Before Mint 18/16.04 you could do this:
+            sudo edit /var/lib/bluetooth/[mac address of Bluetooth]/linkkeys - [the mac address of bluetooth] should be the only folder in that bluetooth folder.
+
+            This file should look something like this
+
+            [Bluetooth MAC]   [Pairing key]                 [digits in pin]  [0]
+            AA:11:22:33:44:55 XXXXXXXXxxXXxXxXXXXXXxxXXXXXxXxX 5 0
+            00:1D:D8:3A:33:83 XXXXXXXXxxXXxXxXXXXXXxxXXXXXxXxX 4 0
+
+            Change the Linux pairing key to the windows one, minus the spaces.
+
+        In Mint 18 (and ubuntu 16.04) you may have to do this:
+            switch to root su -
+            cd to your bluetooth config location /var/lib/bluetooth/[bth port  mac addresses)]
+
+            Here you'll find folders for each device you've paired with. The folder names being the Bluetooth devices mac address and contain a single file info. In these files, you'll see the link key you need to replace with your windows ones like so.
+
+            [LinkKey]
+            Key=B99999999FFFFFFFFF999999999FFFFF
+
+    Once updated, restart your bluetooth service sudo /etc/init.d/bluetooth restart or reboot into linux - it works!
+    Reboot into windows - it works!
+
