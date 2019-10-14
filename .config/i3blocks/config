@@ -40,8 +40,9 @@ markup=pango
 #
 # The type defaults to "mem" if the instance is not specified.
 [memory]
+command=echo $($HOME/linuxStuff/mytools/mem.sh)
 label=<small>RAM</small>
-separator=false
+separator=true
 interval=30
 #color=#666666
 markup=pango
@@ -52,16 +53,19 @@ markup=pango
 #separator=false
 #interval=30
 
+
+
 # Disk usage
 #
 # The directory defaults to $HOME if the instance is not specified.
 # The script may be called with a optional argument to set the alert
 # (defaults to 10 for 10%).
 [disk]
+command=echo $($HOME/linuxStuff/mytools/disk.sh)
 label=💩
 #instance=/mnt/data
 interval=30
-#color=#666666
+color=#666666
 
 # Volume indicator
 #
@@ -69,6 +73,7 @@ interval=30
 # The second parameter overrides the mixer selection
 # See the script for details.
 [volume]
+command=echo $($HOME/linuxStuff/mytools/volume.sh)
 #label=♪
 label=
 instance=Master
@@ -76,6 +81,9 @@ instance=Master
 interval=once
 signal=10
 #color=#666666
+
+
+
 
 # Network interface monitoring
 #
@@ -94,16 +102,17 @@ signal=14
 
 
 [iface]
-#instance=wlan0
+command=echo "<small>$(ip addr show wlp2s0 | grep inet | grep wlp2s0 | sed "s/^[ ]*/ /g" | cut -d" " -f 3)</small>"
+instance=wlan0
 color=#00FF00
 interval=10
 separator=true
 
-[wifi]
+#[wifi]
 #instance=wlp3s0
-interval=10
-separator=false
-signal=15
+#interval=10
+#separator=false
+#signal=15
 
 #[bandwidth]
 #instance=eth0
@@ -113,11 +122,11 @@ signal=15
 #
 # The script may be called with -w and -c switches to specify thresholds,
 # see the script for details.
-[cpu_usage]
-label=CPU
-interval=10
-min_width=CPU: 100.00%
-#separator=false
+#[cpu_usage]
+#label=CPU
+#interval=10
+#min_width=CPU: 100.00%
+##separator=false
 
 #[load_average]
 #interval=10
@@ -176,13 +185,6 @@ separator=false
 #interval=once
 #signal=11
 #
-
-[googledrive]
-command=if [ $(ls $HOME/gd | wc -l) -gt 0 ]; then echo 📁; else exit 1; fi
-interval=once
-separator=false
-signal=12
-
 
 # Battery indicator
 #

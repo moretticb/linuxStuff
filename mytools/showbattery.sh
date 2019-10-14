@@ -1,7 +1,7 @@
 #!/bin/bash
 # instalar acpi
 
-perc=$(acpi -b | cut -d "," -f 2 | cut -d "%" -f 1)
+perc=$(acpi -b | sed -n "$(acpi -b | wc -l)"p | cut -d "," -f 2 | cut -d "%" -f 1)
 stat=$(acpi -b | cut -d " " -f 3)
 
 icon=""
