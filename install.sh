@@ -25,6 +25,10 @@ sudo ln -s -fi $HOME/linuxStuff/mytools/currency.sh /bin/currency
 echo -e "\nLinking btdevices tool"
 sudo ln -s -fi $HOME/linuxStuff/mytools/btdevices.sh /bin/btdevices
 
+echo -e "\nLinking weather tool"
+sudo ln -s -fi $HOME/linuxStuff/mytools/weather.sh /bin/weather
+
+
 
 echo -e "\nCreating folder for mounting Google Drive"
 mkdir -p $HOME/gd

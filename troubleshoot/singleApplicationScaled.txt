@@ -1,0 +1,8 @@
+# Run a program with specific scaling:
+
+env GDK_SCALE=0.5 GDK_DPI_SCALE=0.5 CLUTTER_SCALE=0.5 appname
+
+# where appname is the program to run.
+# It is also possible to set the other scaling/environment variables in .xinitrc file
+
+
