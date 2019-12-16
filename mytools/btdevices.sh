@@ -6,9 +6,8 @@ if [ $? != 0 ]; then
 	exit 1;
 fi
 
-macaddr="$(bluetoothctl devices | sed -n "$num"p | cut -d" " -f 2)"
+macaddr="$(bluetoothctl devices | sed -n "$dnum"p | cut -d" " -f 2)"
 
-#Connecting to Keyboard K380 via Bluetooth
 bluetoothctl << EOF
 power on
 agent on
