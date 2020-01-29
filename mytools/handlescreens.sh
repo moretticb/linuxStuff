@@ -24,7 +24,7 @@ if [ $? = 1 ]; then
 	exit 1
 fi
 
-ref=$(echo $screens | sed -e "s/ /\n/g" | grep -v $targ | dmenu -i -p "Reference screen")
+ref=$(echo $screens | sed -e "s/ /\n/g" | grep -v "^$targ" | dmenu -i -p "Reference screen")
 
 if [ $? = 1 ]; then
 	exit 1
