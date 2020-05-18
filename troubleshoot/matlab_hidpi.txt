@@ -1,0 +1,12 @@
+OPTION 1
+
+run this on matlab:
+s = settings; s.matlab.desktop.DisplayScaleFactor.PersonalValue = 2.5
+matlab needs to be restarted
+
+
+
+OPTION 2
+use run_scaled-git (AUR)
+
+

@@ -1,0 +1,3 @@
+https://bbs.archlinux.org/viewtopic.php?pid=1869571
+
+Remove xf86-video-intel if you have it installed, it's barely maintained and apparently there was some change in the 5.3 series that lead to issues with it.

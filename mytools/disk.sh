@@ -38,7 +38,7 @@ END {
 	gsub(/%$/,"",use)
 	if (100 - use < alert_low) {
 		# color
-		print "#FF0000"
+		#print "#FF0000"
 	}
 }
 '

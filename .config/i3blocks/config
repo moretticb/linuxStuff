@@ -62,7 +62,7 @@ markup=pango
 # (defaults to 10 for 10%).
 [disk]
 command=echo $($HOME/linuxStuff/mytools/disk.sh)
-label=💩
+label= 💩<sub> </sub>
 #instance=/mnt/data
 interval=30
 color=#666666
@@ -75,7 +75,7 @@ color=#666666
 [volume]
 command=echo $($HOME/linuxStuff/mytools/volume.sh)
 #label=♪
-label=
+label= <sub> </sub>
 instance=Master
 #instance=PCM
 interval=once
@@ -91,7 +91,7 @@ signal=10
 # The address can be forced to IPv4 or IPv6 with -4 or -6 switches.
 
 [ssid]
-label=
+label= <sub> </sub>
 color=#00FF00
 command=iwgetid -r
 separator=true
@@ -134,14 +134,14 @@ separator=true
 # Date Time
 #
 [date]
-label=
+label= <sub> </sub>
 command=date '+%a %Y-%m-%d'
 interval=5
 separator=false
 
 [date]
-label=
-command=date '+%H:%M:%S'
+label= <sub> </sub>
+command=date '+%H:%M:<sub>%S</sub>'
 interval=5 
 separator=false
 
