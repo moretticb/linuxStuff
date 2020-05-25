@@ -25,6 +25,7 @@ macaddr="$(bluetoothctl devices | sed -n "$dnum"p | cut -d" " -f 2)"
 bluetoothctl << EOF
 power on
 agent on
+trust $macaddr
 $action $macaddr
 EOF
 

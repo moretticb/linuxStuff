@@ -141,7 +141,7 @@ separator=false
 
 [date]
 label= <sub> </sub>
-command=date '+%H:%M:<sub>%S</sub>'
+command=date '+%H:%M<sub>:%S</sub>'
 interval=5 
 separator=false
 

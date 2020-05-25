@@ -14,8 +14,6 @@ PS1='\u@\h \W\$ '
 export PYTHONSTARTUP=~/.pythonrc
 export EDITOR=vim
 
-setfont Lat2-Terminus16.psfu 2>/dev/null
-
 set -o vi
 
 bind 'set show-mode-in-prompt'

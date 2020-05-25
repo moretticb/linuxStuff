@@ -1,0 +1,3 @@
+edit /etc/bluetooth/main.conf
+
+uncomment the AutoEnable parameter and set it to true
