@@ -96,7 +96,8 @@ bindsym $mod+0x3d exec playerctl --player="vlc" position $(echo $(playerctl --pl
 bindsym $mod+0x2d exec playerctl --player="vlc" position $(echo $(playerctl --player="vlc" position) - 5 | bc) ## goes back 5 seconds in vlc #minus key is 0x2d (WITHOUT SHIFT)
 
 # for logitech extra mouse button (Mod1 is Alt)
-bindsym Control+Mod1+Tab exec $HOME/linuxStuff/mytools/text_translate.sh "$(xsel)"
+#bindsym Control+Mod1+Tab exec $HOME/linuxStuff/mytools/text_translate.sh "$(xsel)"
+bindsym Control+Mod1+Tab exec $HOME/linuxStuff/mytools/text_fasttranslate.sh
 
 #mounting google drive
 bindsym $mod+F11 exec /home/duzas/linuxStuff/mytools/GD.sh && pkill -RTMIN+12 i3blocks ## mounts google drive
