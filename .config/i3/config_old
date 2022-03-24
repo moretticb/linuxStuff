@@ -27,27 +27,12 @@ font pango:Ubuntu 8
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
 
-
-# i3gaps stuff
-for_window [class="^.*"] border pixel 1
-gaps inner 5
-gaps outer 5
-
-
-
-
-
-# Fibonacci layout
-#for_window [class=".*"] split toggle #toggles split at each new window
-
-
-
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec alacritty #termite
+bindsym $mod+Return exec termite
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -64,14 +49,14 @@ bindsym $mod+d exec dmenu_run
 
 #meus binds
 
-bindsym $mod+F1 exec cat $HOME/linuxStuff/.config/i3/config | grep "##" | sed -E "s/^bindsym //g" | sed "s/^[-a-z ]*//g" | sed "s/exec .* ##/ /g" | sed "s/mode .* ##/ /g" | dmenu -l 5 -i -sb "#333333" ## shows this list of shortcuts
+bindsym $mod+F1 exec cat /home/duzas/linuxStuff/.config/i3/config | grep "##" | sed -E "s/^bindsym //g" | sed "s/^[-a-z ]*//g" | sed "s/exec .* ##/ /g" | sed "s/mode .* ##/ /g" | dmenu -l 5 -i -sb "#333333" ## shows this list of shortcuts
 
 for_window [class="Unused"] rename workspace 11 to "_", move container to workspace "_"
 for_window [class="Spotify"] move container to workspace 10
 #for_window [class="pavucontrol"] move container to workspace 10, workspace 10, focus
 
 #lock screen
-bindsym $mod+Ctrl+l exec i3lock -i $HOME/bg.png -t & ## lock screen
+bindsym $mod+Ctrl+l exec i3lock -i /home/duzas/bg.png -t & ## lock screen
 
 #volume control
 #bindsym XF86AudioRaiseVolume exec amixer set Master 2+
@@ -115,50 +100,50 @@ bindsym $mod+0x2d exec playerctl --player="vlc" position $(echo $(playerctl --pl
 bindsym Control+Mod1+Tab exec $HOME/linuxStuff/mytools/text_fasttranslate.sh
 
 #mounting google drive
-bindsym $mod+F11 exec $HOME/linuxStuff/mytools/GD.sh && pkill -RTMIN+12 i3blocks ## mounts google drive
+bindsym $mod+F11 exec /home/duzas/linuxStuff/mytools/GD.sh && pkill -RTMIN+12 i3blocks ## mounts google drive
 
 #screenshot
 #bindsym Print exec scrot -z
-bindsym Print exec $HOME/linuxStuff/mytools/takescreenshot.sh ## takes a screenshot
+bindsym Print exec /home/duzas/linuxStuff/mytools/takescreenshot.sh ## takes a screenshot
 #bindsym --release $mod+Print exec scrot -sz
-bindsym --release $mod+Print exec killall i3-nagbar; exec "$HOME/linuxStuff/mytools/takescreenshot.sh Crop" ## takes a screenshot region
+bindsym --release $mod+Print exec killall i3-nagbar; exec "/home/duzas/linuxStuff/mytools/takescreenshot.sh Crop" ## takes a screenshot region
 
 #simple calculator
-bindsym $mod+a exec $HOME/linuxStuff/mytools/calc.sh ## Calculator
+bindsym $mod+a exec /home/duzas/linuxStuff/mytools/calc.sh ## Calculator
 
 #managing clipboard
-bindsym $mod+c exec $HOME/linuxStuff/mytools/sendtoclipboard.sh ## manages clipboard
+bindsym $mod+c exec /home/duzas/linuxStuff/mytools/sendtoclipboard.sh ## manages clipboard
 
 #search and install from pacman
-bindsym $mod+s exec $HOME/linuxStuff/mytools/pacmansearch.sh ## searches pacman repositories
+bindsym $mod+s exec /home/duzas/linuxStuff/mytools/pacmansearch.sh ## searches pacman repositories
 
 #search and install from yaourt
-bindsym $mod+Shift+s exec $HOME/linuxStuff/mytools/yaourtsearch.sh ## searches AUR repositories (yaourt)
+bindsym $mod+Shift+s exec /home/duzas/linuxStuff/mytools/yaourtsearch.sh ## searches AUR repositories (yaourt)
 
 #open an url
-bindsym $mod+w exec $HOME/linuxStuff/mytools/url.sh ## searches for an url website title or _searches google
+bindsym $mod+w exec /home/duzas/linuxStuff/mytools/url.sh ## searches for an url website title or _searches google
 
 #pick a color and send to clipboard
-bindsym $mod+F2 exec termite --exec="$HOME/linuxStuff/mytools/colorpicker.sh" --class="Unused" ## picks a color and sends to clipboard
+bindsym $mod+F2 exec termite --exec="/home/duzas/linuxStuff/mytools/colorpicker.sh" --class="Unused" ## picks a color and sends to clipboard
 
 #handle multiple monitors
-bindsym $mod+F12 exec $HOME/linuxStuff/mytools/handlescreens.sh ## handles multiple monitors
-bindsym $mod+Ctrl+F12 exec $HOME/linuxStuff/mytools/handleaudio.sh ## handles audio output
+bindsym $mod+F12 exec /home/duzas/linuxStuff/mytools/handlescreens.sh ## handles multiple monitors
+bindsym $mod+Ctrl+F12 exec /home/duzas/linuxStuff/mytools/handleaudio.sh ## handles audio output
 
 #Connecting to wifi profiles
-bindsym $mod+F10 exec $HOME/linuxStuff/mytools/wifi.sh ## connects to netctl wifi profiles or opens wifi-menu
+bindsym $mod+F10 exec /home/duzas/linuxStuff/mytools/wifi.sh ## connects to netctl wifi profiles or opens wifi-menu
 
 #text tools
-bindsym $mod+t exec $HOME/linuxStuff/mytools/text.sh ## text tools
-bindsym $mod+Ctrl+t exec $HOME/linuxStuff/mytools/text.sh "$(xsel -b)" ## text tools from clipboard
+bindsym $mod+t exec /home/duzas/linuxStuff/mytools/text.sh ## text tools
+bindsym $mod+Ctrl+t exec /home/duzas/linuxStuff/mytools/text.sh "$(xsel -b)" ## text tools from clipboard
 
 #keyboard lock keys
-bindsym Caps_Lock exec sleep 0.1 && $HOME/linuxStuff/mytools/keylocks.sh 
-bindsym Num_Lock exec sleep 0.1 && $HOME/linuxStuff/mytools/keylocks.sh
-#bindsym Scroll_Lock exec sleep 0.1 && $HOME/linuxStuff/mytools/keylocks.sh
+bindsym Caps_Lock exec sleep 0.1 && /home/duzas/linuxStuff/mytools/keylocks.sh 
+bindsym Num_Lock exec sleep 0.1 && /home/duzas/linuxStuff/mytools/keylocks.sh
+#bindsym Scroll_Lock exec sleep 0.1 && /home/duzas/linuxStuff/mytools/keylocks.sh
 
 
-bindsym $mod+k exec $HOME/linuxStuff/mytools/kbmap.sh ## set keyboard map
+bindsym $mod+k exec /home/duzas/linuxStuff/mytools/kbmap.sh ## set keyboard map
 
 #hue
 #sudo chmod 4755 /usr/bin/beep
@@ -218,44 +203,36 @@ bindsym $mod+space focus mode_toggle
 # focus the child container
 #bindsym $mod+d focus child
 
-
 # switch to workspace
-bindsym $mod+1 exec i3-msg workspace 1  && pkill -RTMIN+12 i3blocks
-bindsym $mod+2 exec i3-msg workspace 2  && pkill -RTMIN+12 i3blocks
-bindsym $mod+3 exec i3-msg workspace 3  && pkill -RTMIN+12 i3blocks
-bindsym $mod+4 exec i3-msg workspace 4  && pkill -RTMIN+12 i3blocks
-bindsym $mod+5 exec i3-msg workspace 5  && pkill -RTMIN+12 i3blocks
-bindsym $mod+6 exec i3-msg workspace 6  && pkill -RTMIN+12 i3blocks
-bindsym $mod+7 exec i3-msg workspace 7  && pkill -RTMIN+12 i3blocks
-bindsym $mod+8 exec i3-msg workspace 8  && pkill -RTMIN+12 i3blocks
-bindsym $mod+9 exec i3-msg workspace 9  && pkill -RTMIN+12 i3blocks
-bindsym $mod+0 exec i3-msg workspace 10 && pkill -RTMIN+12 i3blocks
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 exec i3-msg move container to workspace 1  && pkill -RTMIN+12 i3blocks
-bindsym $mod+Shift+2 exec i3-msg move container to workspace 2  && pkill -RTMIN+12 i3blocks
-bindsym $mod+Shift+3 exec i3-msg move container to workspace 3  && pkill -RTMIN+12 i3blocks
-bindsym $mod+Shift+4 exec i3-msg move container to workspace 4  && pkill -RTMIN+12 i3blocks
-bindsym $mod+Shift+5 exec i3-msg move container to workspace 5  && pkill -RTMIN+12 i3blocks
-bindsym $mod+Shift+6 exec i3-msg move container to workspace 6  && pkill -RTMIN+12 i3blocks
-bindsym $mod+Shift+7 exec i3-msg move container to workspace 7  && pkill -RTMIN+12 i3blocks
-bindsym $mod+Shift+8 exec i3-msg move container to workspace 8  && pkill -RTMIN+12 i3blocks
-bindsym $mod+Shift+9 exec i3-msg move container to workspace 9  && pkill -RTMIN+12 i3blocks
-bindsym $mod+Shift+0 exec i3-msg move container to workspace 10 && pkill -RTMIN+12 i3blocks
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r exec $HOME/linuxStuff/mytools/place_workplace_buttons.sh && i3-msg restart
-bindsym $mod+Mod1+r exec i3blocks 1>/tmp/i3blocksrender.txt 2>/dev/null & sleep 1 && kill $! && i3-msg restart
+bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-
-# resizing outside resize mode
-bindsym $mod+Mod1+Right exec i3-msg resize grow right 10 px || exec i3-msg resize shrink left 10 px
-bindsym $mod+Mod1+Left exec i3-msg resize grow left 10 px || exec i3-msg resize shrink right 10 px
-bindsym $mod+Mod1+Down exec i3-msg resize grow down 10 px || exec i3-msg resize shrink up 10 px
-bindsym $mod+Mod1+Up exec i3-msg resize grow up 10 px || exec i3-msg resize shrink down 10 px
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -307,9 +284,8 @@ mode "mouse" {
 	bindsym Escape mode "default"
 }
 
-bindsym $mod+m mode "mouse" ## mouse mode (mod+arrow keys for cursor and ,. for clicks)
-#bindsym $mod+m exec i3-msg mode "mouse" && sleep 0.1 && killall i3-nagbar  ## mouse mode (mod+arrow keys for cursor and ,. for clicks)
-#
+#bindsym $mod+m mode "mouse" ## mouse mode (mod+arrow keys for cursor and ,. for clicks)
+bindsym $mod+m exec i3-msg mode "mouse" && killall i3-nagbar  ## mouse mode (mod+arrow keys for cursor and ,. for clicks)
 
 mode "piano" {
 	
@@ -422,27 +398,16 @@ hide_edge_borders both
 bar {
         #status_command i3status
         status_command i3blocks
-	position top
-	i3bar_command i3bar --transparency
 	#install otf-font-awesome-4
-	#strip_workspace_numbers yes
-	#strip_workspace_name yes
-	workspace_buttons no
-	# https://github.com/ryanoasis/powerline-extra-symbols
-	font pango: Droid Sans Mono for Powerline Plus Nerd File Types Mono 11
+	font pango:FontAwesome 10
         colors {
-#	  separator #ffffff
-	  background #ffffff00
-#	  statusline #00000000
-#	  separator $base03
-#	  background $base01
-#	  statusline $base05
+	  separator $base03
+	  background $base01
+	  statusline $base05
 	  #                  border  background text
-	  focused_workspace  #000000 #00000000  $base07
+	  focused_workspace  $base01 $base01    $base07
 	  active_workspace   $base01 $base02    $base03
-	  inactive_workspace #00000000 #00000000    $base03
+	  inactive_workspace $base01 $base01    $base03
 	  urgent_workspace   $base01 $base01    $base08
        }
 }
-
-

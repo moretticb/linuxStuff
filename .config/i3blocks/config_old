@@ -25,39 +25,27 @@
 # The top properties below are applied to every block, but can be overridden.
 # Each block command defaults to the script name to avoid boilerplate.
 command=/usr/lib/i3blocks/$BLOCK_NAME
+separator_block_width=15
 markup=pango
-
-
-#MUST BE THE FIRST BLOCK, so the kerning estimation of total block widths works!
-# LEAVE THE SPACE BETWEEN separator_block_width and min_width AND THE VALUES so workspace numbers can be properly placed on the other side of the bar
-[workspaces]
-command=$HOME/linuxStuff/mytools/workspaces.sh $button $width $relative_x
-interval=10
-separator=false
-separator_block_width= 1045
-min_width= 280
-align=left
-signal=12
-markup=pango
-
 
 
 [barmsg]
-command=test -f /tmp/barmsg.txt && $HOME/linuxStuff/mytools/barsections.sh white black "$(cat /tmp/barmsg.txt)" && rm /tmp/barmsg.txt
-#command=test -f /tmp/barmsg.txt && echo -e "$(cat /tmp/barmsg.txt)" && rm /tmp/barmsg.txt
+command=cat /tmp/barmsg.txt; echo "" > /tmp/barmsg.txt
 interval=15
 separator=false
-separator_block_width=20
 signal=13
 markup=pango
 
-
 # Memory usage
+#
+# The type defaults to "mem" if the instance is not specified.
 [memory]
-command=$HOME/linuxStuff/mytools/barsections.sh black white " $($HOME/linuxStuff/mytools/mem.sh)" "💩 $($HOME/linuxStuff/mytools/disk.sh)"
+command=echo $($HOME/linuxStuff/mytools/mem.sh)
+label=<small>RAM</small>
+separator=true
 interval=30
-separator=false
-separator_block_width=5
+#color=#666666
+markup=pango
 
 #[memory]
 #label=SWAP
@@ -72,12 +60,12 @@ separator_block_width=5
 # The directory defaults to $HOME if the instance is not specified.
 # The script may be called with a optional argument to set the alert
 # (defaults to 10 for 10%).
-#[disk]
-#command=echo $($HOME/linuxStuff/mytools/disk.sh)
-#label= 💩
-##instance=/mnt/data
-#interval=30
-#color=#666666
+[disk]
+command=echo $($HOME/linuxStuff/mytools/disk.sh)
+label= 💩<sub> </sub>
+#instance=/mnt/data
+interval=30
+color=#666666
 
 # Volume indicator
 #
@@ -85,13 +73,13 @@ separator_block_width=5
 # The second parameter overrides the mixer selection
 # See the script for details.
 [volume]
-command=$HOME/linuxStuff/mytools/barsections.sh black white "♫ $($HOME/linuxStuff/mytools/volume.sh)"
+command=echo $($HOME/linuxStuff/mytools/volume.sh)
+#label=♪
+label= <sub> </sub>
 instance=Master
 #instance=PCM
 interval=once
 signal=10
-separator=false
-separator_block_width=5
 #color=#666666
 
 
@@ -103,20 +91,22 @@ separator_block_width=5
 # The address can be forced to IPv4 or IPv6 with -4 or -6 switches.
 
 [ssid]
-command=$HOME/linuxStuff/mytools/barsections.sh black yellow "" "$(iwgetid -r || echo -)"
-#command=iwgetid -r
-separator=false
-separator_block_width=5
+label= <sub> </sub>
+color=#00FF00
+command=iwgetid -r
+separator=true
 interval=10
+separator=false
+separator_block_width=4
 signal=14
 
 
-#[iface]
-#command=echo "<small>$(ip addr show wlp2s0 | grep inet | grep wlp2s0 | sed "s/^[ ]*/ /g" | cut -d" " -f 3)</small>"
-#instance=wlan0
-#color=#00FF00
-#interval=10
-#separator=true
+[iface]
+command=echo "<small>$(ip addr show wlp2s0 | grep inet | grep wlp2s0 | sed "s/^[ ]*/ /g" | cut -d" " -f 3)</small>"
+instance=wlan0
+color=#00FF00
+interval=10
+separator=true
 
 #[wifi]
 #instance=wlp3s0
@@ -141,14 +131,19 @@ signal=14
 #[load_average]
 #interval=10
 
-
 # Date Time
 #
 [date]
-command=$HOME/linuxStuff/mytools/barsections.sh black white "$(date '+%a %Y-%m-%d')" " $(date '+%H:%M')"
+label= <sub> </sub>
+command=date '+%a %Y-%m-%d'
+interval=5
+separator=false
+
+[date]
+label= <sub> </sub>
+command=date '+%H:%M<sub>:%S</sub>'
 interval=5 
 separator=false
-separator_block_width=5
 
 # Generic media player support
 #
@@ -195,16 +190,8 @@ separator_block_width=5
 #
 # The battery instance defaults to 0.
 [battery]
-command=echo $($HOME/linuxStuff/mytools/barsections.sh black white "$($HOME/linuxStuff/mytools/showbattery.sh)")
+command=echo $($HOME/linuxStuff/mytools/showbattery.sh)
 #label=⚡
 #instance=1
-separator=false
-separator_block_width=0
 interval=30
 
-
-
-[separator]
-min_width=10
-full_text= 
-interval=5
