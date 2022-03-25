@@ -55,3 +55,6 @@ ln -s -fi $HOME/linuxStuff/.bash_profile $HOME/.bash_profile
 echo -e "\nxinitrc"
 ln -s -fi $HOME/linuxStuff/.xinitrc $HOME/.xinitrc
 
+echo -e "\nXmodmap"
+ln -s -fi $HOME/linuxStuff/.Xmodmap $HOME/.Xmodmap
+

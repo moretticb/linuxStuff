@@ -1,5 +1,3 @@
-/home/duzas/linuxStuff/.fehbg &
-
 # 12 is the id of the touchpad. Check troubleshoot to get the scrolling input device id
 xinput set-button-map 12 1 2 3 5 4 6 7 8 9 10 11 12 &
 
@@ -11,7 +9,7 @@ xinput set-button-map 12 1 2 3 5 4 6 7 8 9 10 11 12 &
 #export ELM_SCALE=1.5
 
 
-VBoxClient-all &
+#VBoxClient-all &
 xmodmap ~/.Xmodmap
 
 
