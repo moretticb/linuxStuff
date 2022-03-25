@@ -13,6 +13,12 @@ mkdir -p $HOME/.config/i3
 echo "Linking i3 config file"
 ln -s -fi $HOME/linuxStuff/.config/i3/config $HOME/.config/i3/config
 
+echo -e "\nCreating directory for alacritty config file"
+mkdir -p $HOME/.config/alacritty
+
+echo "Linking alacritty config file"
+ln -s -fi $HOME/linuxStuff/.config/alacritty/alacritty.yml $HOME/.config/alacritty/alacritty.yml
+
 echo -e "\nLinking USPNet vpn connection script"
 sudo ln -s -fi $HOME/linuxStuff/mytools/vpn.sh /bin/vpn
 
