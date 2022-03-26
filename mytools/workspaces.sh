@@ -1,5 +1,8 @@
 #!/bin/sh
 
+L="&#57526;" #"\uE0B6"
+R="&#57524;" #"\uE0B4"
+
 #total workspaces
 wt=$(i3-msg -t get_workspaces | jq '. | length')
 
@@ -25,18 +28,18 @@ c1="black" #background
 c2="white" #foreground
 c3="yellow" #urgent workspaces
 
-st="<span color='$c1' bgalpha='40%' fgalpha='40%'>\uE0B6</span>"
+st="<span color='$c1' bgalpha='40%' fgalpha='40%'>$L</span>"
 mid_st="<span color='$c2' bgcolor='$c1' bgalpha='40%' fgalpha='40%'>"
 mid_ed="</span>"
-ed="<span color='$c1' bgalpha='40%' fgalpha='40%'>\uE0B4</span>"
+ed="<span color='$c1' bgalpha='40%' fgalpha='40%'>$R</span>"
 
-ed2="<span color='$c1' fgalpha='40%' bgcolor='$c1' bgalpha='60%'>\uE0B4</span>"
+ed2="<span color='$c1' fgalpha='40%' bgcolor='$c1' bgalpha='60%'>$R</span>"
 mid_st2="<span color='$c2' bgcolor='$c1' bgalpha='60%'>"
 mid_ed2="</span>"
-st2="<span color='$c1' fgalpha='40%' bgcolor='$c1' bgalpha='60%'>\uE0B6</span>"
+st2="<span color='$c1' fgalpha='40%' bgcolor='$c1' bgalpha='60%'>$L</span>"
 
-st_cnr="<span color='$c1' bgalpha='40%' fgalpha='60%'>\uE0B6</span>"
-ed_cnr="<span color='$c1' bgalpha='40%' fgalpha='60%'>\uE0B4</span>"
+st_cnr="<span color='$c1' bgalpha='40%' fgalpha='60%'>$L</span>"
+ed_cnr="<span color='$c1' bgalpha='40%' fgalpha='60%'>$R</span>"
 
 #total workspaces
 wt=$(i3-msg -t get_workspaces | jq '. | length')
