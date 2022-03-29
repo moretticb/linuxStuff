@@ -79,5 +79,21 @@ else
 	markup="${st}${mid_st}${ba}${mid_ed}${ed2}${mid_st2} ${aw} ${mid_ed2}${st2}${mid_st}${aa}${mid_ed}${ed}"
 fi
 
+barnum="$($HOME/linuxStuff/mytools/bar_get_output.sh)"
+barwid="$($HOME/linuxStuff/mytools/bar_width_estimate.sh $barnum)"
 
-echo -e "${markup}"
+if [ "$barnum" = "-1" ]; then
+	barnum="0"
+fi
+
+output=$(cat $HOME/.config/i3/config | grep "^[[:space:]]*output" | sed "$(echo "$barnum+1" | bc)!d" | awk '{print $2}')
+outputwid=$(xrandr | grep $output | awk '{print $3}' | cut -d"x" -f 1)
+rem_space=$(echo "$outputwid-$barwid" | bc)
+
+fillchars="$($HOME/linuxStuff/mytools/bar_width_estimate.sh $barnum $rem_space)"
+
+fillstr="$(seq $fillchars | awk '{print " "}' ORS='')"
+
+
+
+echo -e "${markup}$fillchars"
