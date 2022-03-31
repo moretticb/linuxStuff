@@ -1,5 +1,9 @@
+#!/bin/sh
+
+font="Ubuntu-$($HOME/linuxStuff/mytools/get_ws_fontsize.sh)"
+
 cards="$(pacmd list-cards | head -1 | cut -d' ' -f 1)"
-card="$(pacmd list-cards | grep alsa.card_name | cut -d'"' -f 2 | grep -n . | dmenu -i -p "Audio card" | cut -d':' -f 1)"
+card="$(pacmd list-cards | grep alsa.card_name | cut -d'"' -f 2 | grep -n . | dmenu -i -p "Audio card" -fn "$font" | cut -d':' -f 1)"
 
 cardIndex=$(echo "$card -1" | bc)
 

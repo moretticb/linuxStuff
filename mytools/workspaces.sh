@@ -1,13 +1,30 @@
 #!/bin/sh
 
+#line below is file="..." for barmsg tool
+eval "$(cat $HOME/linuxStuff/mytools/barmsg.sh | head -1)"
+test -f "$file" && msgstr="  $($HOME/linuxStuff/mytools/barsections.sh white black "$(cat $file)")"
+rm -f $file
+
 L="&#57526;" #"\uE0B6"
 R="&#57524;" #"\uE0B4"
 
+
+barnum="$($HOME/linuxStuff/mytools/bar_get_output.sh)"
+
+if [ "$barnum" = "-1" ]; then
+	barnum="0"
+fi
+
+barwid="$($HOME/linuxStuff/mytools/bar_width_estimate.sh $barnum)"
+
+
+output=$(cat $HOME/.config/i3/config | grep "^[[:space:]]*output" | sed "$(echo "$barnum+1" | bc)!d" | awk '{print $2}')
+
 #total workspaces
-wt=$(i3-msg -t get_workspaces | jq '. | length')
+wt=$(i3-msg -t get_workspaces | jq "map(select(.output==\"$output\")) | length")
 
 # workspace pos
-wp=$(i3-msg -t get_workspaces | jq .[].num | grep -n $(i3-msg -t get_workspaces | jq -r 'map(select(.focused))[0].num') | cut -d":" -f 1)
+wp=$(i3-msg -t get_workspaces | jq "map(select(.output==\"$output\"))[].num" | grep -n $(i3-msg -t get_workspaces | jq -r 'map(select(.focused))[0].num') | cut -d":" -f 1)
 
 # handling button events before rendering
 if [ "$1" = "4" ] && [ "$wp" -gt "1" ]; then # scroll up
@@ -16,10 +33,10 @@ if [ "$1" = "4" ] && [ "$wp" -gt "1" ]; then # scroll up
 elif [ "$1" = "5" ] && [ "$wp" -lt "$wt" ]; then # scroll down
 	sendto="$(i3-msg -t get_workspaces | jq ".[$(echo "${wp}" | bc)].num")"
 	i3-msg workspace ${sendto} 1>/dev/null
-elif [ "$1" = "1" ]; then #click
-	sendto="$(echo "$3/($2/$wt)" | bc)"
-	sendto="$(i3-msg -t get_workspaces | jq ".[${sendto}].num")"
-	i3-msg workspace ${sendto} 1>/dev/null
+#elif [ "$1" = "1" ]; then #click
+#	sendto="$(echo "$3/($2/$wt)" | bc)"
+#	sendto="$(i3-msg -t get_workspaces | jq ".[${sendto}].num")"
+#	i3-msg workspace ${sendto} 1>/dev/null
 fi
 
 
@@ -42,16 +59,17 @@ st_cnr="<span color='$c1' bgalpha='40%' fgalpha='60%'>$L</span>"
 ed_cnr="<span color='$c1' bgalpha='40%' fgalpha='60%'>$R</span>"
 
 #total workspaces
-wt=$(i3-msg -t get_workspaces | jq '. | length')
+wt=$(i3-msg -t get_workspaces | jq "map(select(.output==\"$output\")) | length")
 
 #active workspace position
-wp=$(i3-msg -t get_workspaces | jq .[].num | grep -n $(i3-msg -t get_workspaces | jq -r 'map(select(.focused))[0].num') | cut -d":" -f 1)
+#wp=$(i3-msg -t get_workspaces | jq .[].num | grep -n $(i3-msg -t get_workspaces | jq -r 'map(select(.focused))[0].num') | cut -d":" -f 1)
+wp=$(i3-msg -t get_workspaces | jq "map(select(.output==\"$output\"))[].num" | grep -n $(i3-msg -t get_workspaces | jq -r 'map(select(.focused))[0].num') | cut -d":" -f 1)
 
 #active workspace
 aw=$(i3-msg -t get_workspaces | jq -r 'map(select(.focused))[0].num')
 
 #workspaces
-ws=$(i3-msg -t get_workspaces | jq .[].num | awk '{print}' ORS='')
+ws=$(i3-msg -t get_workspaces | jq "map(select(.output==\"$output\"))[].num" | awk '{print}' ORS='')
 
 #before active workspace
 ba=$(echo $ws | sed -E "s/([0-9])/ \1 /g" | sed "s/${aw}.*//g" | sed "s/  $/ /g")
@@ -67,10 +85,16 @@ for w in $(i3-msg -t get_workspaces | jq -r 'map(select(.urgent))[].num'); do
 	aa=$(echo "$aa" | sed "$sed_expr")
 done
 
-
-if [ "$wp" = "1" ]; then
+if [ "$(echo "$ws" | grep "$aw" | wc -l)" = "0" ]; then
+	# no active in this workspace
+	markup="${st}${mid_st}${ba}${mid_ed}${ed}"
+elif [ "$wp" = "1" ]; then
 	# active is at left
-	markup="${st_cnr}${mid_st2} ${aw} ${mid_ed2}${st2}${mid_st}${aa}${mid_ed}${ed}"
+	if [ "$wt" = "1" ]; then
+		markup="${st_cnr}${mid_st2} ${aw} ${mid_ed2}${ed_cnr}"
+	else
+		markup="${st_cnr}${mid_st2} ${aw} ${mid_ed2}${st2}${mid_st}${aa}${mid_ed}${ed}"
+	fi
 elif [ "$wp" = "$wt" ]; then
 	# active is at right
 	markup="${st}${mid_st}${ba}${mid_ed}${ed2}${mid_st2} ${aw} ${mid_ed}${ed_cnr}"
@@ -79,21 +103,14 @@ else
 	markup="${st}${mid_st}${ba}${mid_ed}${ed2}${mid_st2} ${aw} ${mid_ed2}${st2}${mid_st}${aa}${mid_ed}${ed}"
 fi
 
-barnum="$($HOME/linuxStuff/mytools/bar_get_output.sh)"
-barwid="$($HOME/linuxStuff/mytools/bar_width_estimate.sh $barnum)"
+outputwid=$(xrandr | grep "$output" | awk '{print $3}' | cut -d"x" -f 1)
 
-if [ "$barnum" = "-1" ]; then
-	barnum="0"
-fi
-
-output=$(cat $HOME/.config/i3/config | grep "^[[:space:]]*output" | sed "$(echo "$barnum+1" | bc)!d" | awk '{print $2}')
-outputwid=$(xrandr | grep $output | awk '{print $3}' | cut -d"x" -f 1)
-rem_space=$(echo "$outputwid-$barwid" | bc)
+rem_space=$(echo "$outputwid - $barwid" | bc)
 
 fillchars="$($HOME/linuxStuff/mytools/bar_width_estimate.sh $barnum $rem_space)"
 
 fillstr="$(seq $fillchars | awk '{print " "}' ORS='')"
 
 
+echo -e "${markup}${msgstr}"
 
-echo -e "${markup}$fillchars"

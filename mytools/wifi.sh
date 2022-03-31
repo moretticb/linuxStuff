@@ -3,7 +3,10 @@
 # listar perfis em /etc/netctl com dmenu
 #	opcao para abrir o wifi-menu numa nova janela com o termite
 
-ssid=$(ls /etc/netctl | grep -v _temp$ | sed -E "s/^[^-]*$/OPEN WiFi MENU/g" | sed -E "s/[a-zA-Z0-9]+-(.*)/\1/g" | uniq | dmenu -p "WiFi" -i)
+font="Ubuntu-$($HOME/linuxStuff/mytools/get_ws_fontsize.sh)"
+
+
+ssid=$(ls /etc/netctl | grep -v _temp$ | sed -E "s/^[^-]*$/OPEN WiFi MENU/g" | sed -E "s/[a-zA-Z0-9]+-(.*)/\1/g" | uniq | dmenu -p "WiFi" -i -fn "$font")
 
 if [ "$?" = "1" ]; then
 	exit 1;

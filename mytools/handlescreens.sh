@@ -3,10 +3,13 @@
 # install xrandr
 # install dmenu
 
+font="Ubuntu-$($HOME/linuxStuff/mytools/get_ws_fontsize.sh)"
+
+
 screens=$(xrandr --current | grep " connected" | cut -d " " -f 1)
 options=$(xrandr --current | grep " connected" | wc -l)
 
-targ=$(echo $screens | sed -e "s/ /\n/g" | dmenu -i -p "Target screen")
+targ=$(echo $screens | sed -e "s/ /\n/g" | dmenu -i -p "Target screen" -fn "$font")
 
 if [ $? = 1 ]; then
 	exit 1
@@ -18,13 +21,13 @@ if [ $options = 1 ]; then
 	exit 0
 fi
 
-pos=$(echo -e "Same\nLeft\nRight\nAbove\nBelow" | dmenu -i -p "Position")
+pos=$(echo -e "Same\nLeft\nRight\nAbove\nBelow" | dmenu -i -p "Position" -fn "$font")
 
 if [ $? = 1 ]; then
 	exit 1
 fi
 
-ref=$(echo $screens | sed -e "s/ /\n/g" | grep -v "^$targ" | dmenu -i -p "Reference screen")
+ref=$(echo $screens | sed -e "s/ /\n/g" | grep -v "^$targ" | dmenu -i -p "Reference screen" -fn "$font")
 
 if [ $? = 1 ]; then
 	exit 1

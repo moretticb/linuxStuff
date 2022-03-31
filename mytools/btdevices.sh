@@ -1,5 +1,7 @@
 #!/bin/sh
 
+font="Ubuntu-$($HOME/linuxStuff/mytools/get_ws_fontsize.sh)"
+
 action="connect"
 alt="disconnect"
 if [ "$1" == "disconnect" ]; then
@@ -9,7 +11,7 @@ fi
 
 
 
-dnum="$(bluetoothctl devices | cut -d" " -f 3- | grep -n "" | sed -E "s/1/0:$alt\n1/g" | dmenu -p "$action" | cut -d":" -f 1)"
+dnum="$(bluetoothctl devices | cut -d" " -f 3- | grep -n "" | sed -E "s/1/0:$alt\n1/g" | dmenu -p "$action" -fn "$font" | cut -d":" -f 1)"
 
 if [ $? != 0 ]; then
 	exit 1;

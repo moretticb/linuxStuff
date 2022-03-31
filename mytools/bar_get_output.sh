@@ -20,6 +20,7 @@ while true; do
 
 	i="$(echo "$i+1" | bc)"
 done
-bar=$(echo $parent | cut -d"-' -f 6)
+
+bar=$(echo $parent | cut -d"-" -f 6)
 
 echo $bar

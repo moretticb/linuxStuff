@@ -29,27 +29,25 @@ markup=pango
 
 
 #MUST BE THE FIRST BLOCK, so the kerning estimation of total block widths works!
-# LEAVE THE SPACE BETWEEN separator_block_width and min_width AND THE VALUES so workspace numbers can be properly placed on the other side of the bar
+# LEAVE THE SPACE BETWEEN EQUAL CHAR for min_width AND THE VALUES so workspace numbers can be properly placed on the other side of the bar
 [workspaces]
 command=$HOME/linuxStuff/mytools/workspaces.sh $button $width $relative_x
 interval=10
 separator=false
-separator_block_width= 1045
-min_width= 280
+separator_block_width=0
+min_width= 0
 align=left
 signal=12
 markup=pango
 
-
-
-[barmsg]
-command=test -f /tmp/barmsg.txt && $HOME/linuxStuff/mytools/barsections.sh white black "$(cat /tmp/barmsg.txt)" && rm /tmp/barmsg.txt
-#command=test -f /tmp/barmsg.txt && echo -e "$(cat /tmp/barmsg.txt)" && rm /tmp/barmsg.txt
-interval=15
-separator=false
-separator_block_width=20
-signal=13
-markup=pango
+#[barmsg]
+#command=test -f /tmp/barmsg.txt && $HOME/linuxStuff/mytools/barsections.sh white black "$(cat /tmp/barmsg.txt)" && rm /tmp/barmsg.txt
+##command=test -f /tmp/barmsg.txt && echo -e "$(cat /tmp/barmsg.txt)" && rm /tmp/barmsg.txt
+#interval=15
+#separator=false
+#separator_block_width=20
+#signal=13
+#markup=pango
 
 
 # Memory usage
@@ -103,8 +101,9 @@ separator_block_width=5
 # The address can be forced to IPv4 or IPv6 with -4 or -6 switches.
 
 [ssid]
-command=$HOME/linuxStuff/mytools/barsections.sh black yellow "" "$(iwgetid -r || echo -)"
 #command=iwgetid -r
+#command=$HOME/linuxStuff/mytools/barsections.sh black yellow "&#61672;&#61931;" "$(echo $(iwgetid -r && ip address show | grep 'inet.*wlp2s0' | awk '{print $2}') || echo -)"
+command=$HOME/linuxStuff/mytools/networkinfo.sh
 separator=false
 separator_block_width=5
 interval=10

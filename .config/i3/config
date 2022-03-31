@@ -56,7 +56,8 @@ bindsym $mod+Shift+q kill
 bindsym $mod+Shift+d exec $HOME/linuxStuff/mytools/scaleopen.sh
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+#bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec $HOME/linuxStuff/mytools/dmenu_run_font.sh
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -249,7 +250,7 @@ bindsym $mod+Shift+c reload
 #bindsym $mod+Shift+r exec $HOME/linuxStuff/mytools/place_workplace_buttons.sh && i3-msg restart
 bindsym $mod+Shift+r restart
 # bindsym $mod+Shift+r restart
-bindsym $mod+Mod1+r exec i3blocks 1>/tmp/i3blocksrender.txt 2>/dev/null & sleep 1 && kill $! && i3-msg restart
+bindsym $mod+Mod1+r exec $HOME/linuxStuff/mytools/renderblocks.sh && i3-msg restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
@@ -300,7 +301,7 @@ mode "mouse" {
 	bindsym 0x2c exec xdotool click 1 #comma
 	bindsym 0x2e exec xdotool click 3 #dot
 
-	bindsym $mod+space exec xdotool getmouselocation > /tmp/barmsg.txt && pkill -RTMIN+13 i3blocks
+	bindsym $mod+space exec $HOME/linuxStuff/mytools/barmsg.sh "$(xdotool getmouselocation)"
 
 
 	bindsym $mod+Ctrl+Shift+Up exec xdotool click 4
@@ -309,7 +310,8 @@ mode "mouse" {
 	bindsym Escape mode "default"
 }
 
-bindsym $mod+m mode "mouse" ## mouse mode (mod+arrow keys for cursor and ,. for clicks)
+## mouse mode (mod+arrow keys for cursor and ,. for clicks)
+bindsym $mod+m mode "mouse" 
 #bindsym $mod+m exec i3-msg mode "mouse" && sleep 0.1 && killall i3-nagbar  ## mouse mode (mod+arrow keys for cursor and ,. for clicks)
 #
 
@@ -422,23 +424,25 @@ hide_edge_borders both
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3blocks
+        #status_command i3blocks
+        status_command exec i3blocks $([ -f "$HOME/.config/i3blocks/config_eDP1" ] && echo "-c $HOME/.config/i3blocks/config_eDP1")
 	position top
-	i3bar_command i3bar --transparency
+	i3bar_command xrandr | grep "eDP1 c" && i3bar --transparency
 	workspace_buttons no
-	output: eDP1
-	font pango: Droid Sans Mono for Powerline Plus Nerd File Types Mono 11
+	output eDP1
+	font pango: Droid Sans Mono for Powerline Plus Nerd File Types Mono 18
         colors {
 	  background #ffffff00
        }
 }
 
 bar {
-        status_command i3blocks
+        #status_command i3blocks
+        status_command exec i3blocks $([ -f "$HOME/.config/i3blocks/config_HDMI1" ] && echo "-c $HOME/.config/i3blocks/config_HDMI1")
 	position top
-	i3bar_command i3bar --transparency
+	i3bar_command xrandr | grep "HDMI1 c" && i3bar --transparency
 	workspace_buttons no
-	output: HDMI1
+	output HDMI1
 	font pango: Droid Sans Mono for Powerline Plus Nerd File Types Mono 11
         colors {
 	  background #ffffff00

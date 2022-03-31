@@ -1,5 +1,9 @@
+#!/bin/sh
+
+font="Ubuntu-$($HOME/linuxStuff/mytools/get_ws_fontsize.sh)"
+
 echo "Traduzir: $1"
-lang=$(echo -e "en\npt\nit\npt-en\nen-pt\npt-it\nit-pt\nit-en\nen-it" | dmenu -p "(T) To-From" -nb "#EFEFEF" -nf "#454545" -sb "#0288D1" -sf "#222222")
+lang=$(echo -e "en\npt\nit\npt-en\nen-pt\npt-it\nit-pt\nit-en\nen-it" | dmenu -p "(T) To-From" -nb "#EFEFEF" -nf "#454545" -sb "#0288D1" -sf "#222222" -fn "$font")
 
 if [ $? = 1 ]; then
 	exit 1;
@@ -29,7 +33,7 @@ line=$(\
 	--data-urlencode "tl=$to"\
 	--data-urlencode "dt=at"\
 	--data-urlencode "q=$1"\
-	 -sL "${api_url}" | jq .[5][0][2][0][0] | dmenu -l 5 -p "(T $from-$to) $(echo $1 | cut -b-15)..." -nb "#EFEFEF" -nf "#454545" -sb "#0288D1" -sf "#222222")
+	 -sL "${api_url}" | jq .[5][0][2][0][0] | dmenu -l 5 -p "(T $from-$to) $(echo $1 | cut -b-15)..." -nb "#EFEFEF" -nf "#454545" -sb "#0288D1" -sf "#222222" -fn "$font")
 
 
 if [ "$?" = 1 ]; then
