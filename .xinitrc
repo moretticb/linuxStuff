@@ -19,8 +19,10 @@ xrandr --output Virtual-1 --primary --mode 1920x1080_60.00 --pos 0x0 --rotate no
 
 nitrogen --set-zoom-fill --random /home/duzas/wallpapers &
 picom &
-exec i3 &
 
 if test -f ~/scrlayout.sh; then
-	~/scrlayout.sh
+	sleep 5 && ~/scrlayout.sh && nitrogen --set-zoom-fill --random /home/duzas/wallpapers &
 fi
+
+exec i3 
+
