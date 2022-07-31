@@ -9,10 +9,19 @@ font="Ubuntu-$($HOME/linuxStuff/mytools/get_ws_fontsize.sh)"
 screens=$(xrandr --current | grep " connected" | cut -d " " -f 1)
 options=$(xrandr --current | grep " connected" | wc -l)
 
+if test -f "$HOME/scrlayout.sh"; then
+	screens=$(echo -e "layout\n$(echo -e "$screens")")
+fi
+
 targ=$(echo $screens | sed -e "s/ /\n/g" | dmenu -i -p "Target screen" -fn "$font")
 
 if [ $? = 1 ]; then
 	exit 1
+fi
+
+if [ "$targ" = "layout" ]; then
+	$HOME/scrlayout.sh && nitrogen --set-zoom-fill --random $HOME/wallpapers &
+	exit 0
 fi
 
 echo "OPTIONS IS $options"
